@@ -127,18 +127,32 @@
         </div>
       </div>
       <!-- INTRO VIDEO -->
-      <div style="border-radius:20px;overflow:hidden;background:#0A0A0A;display:flex;align-items:stretch;">
-        <iframe 
-          width="100%"
-          height="100%"
-          src="https://www.youtube.com/embed/rbrR9rx3UBw?si=4e0rGElnhZ-4R78M"
-          title="YouTube video player"
-          frameborder="0"
-          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-          referrerpolicy="strict-origin-when-cross-origin"
-          allowfullscreen
-          style="min-height:320px;width:100%;display:block;">
-        </iframe>
+<!-- VIDEO_TYPE: change to "landscape" (16:9) or "portrait" (9:16 Shorts) -->
+<div id="video-container" style="border-radius:20px;overflow:hidden;background:#0A0A0A;display:flex;justify-content:center;">
+  <div id="video-wrapper" style="position:relative;width:100%;padding-bottom:56.25%;height:0;">
+    <iframe 
+      id="intro-iframe"
+      src="https://www.youtube.com/embed/rbrR9rx3UBw?si=4e0rGElnhZ-4R78M"
+      title="YouTube video player"
+      frameborder="0"
+      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+      referrerpolicy="strict-origin-when-cross-origin"
+      allowfullscreen
+      style="position:absolute;top:0;left:0;width:100%;height:100%;">
+    </iframe>
+  </div>
+</div>
+<!-- VIDEO FORMAT TOGGLE -->
+<div style="display:flex;gap:0.5rem;margin-top:0.8rem;justify-content:center;">
+  <button onclick="setVideoFormat('landscape')" id="btn-landscape"
+    style="background:#C9A96E;color:#0A0A0A;border:none;padding:0.4rem 1rem;border-radius:20px;font-size:0.75rem;font-weight:600;cursor:pointer;font-family:'Outfit',sans-serif;">
+    ▬ Landscape
+  </button>
+  <button onclick="setVideoFormat('portrait')" id="btn-portrait"
+    style="background:rgba(201,169,110,0.2);color:#C9A96E;border:1px solid rgba(201,169,110,0.3);padding:0.4rem 1rem;border-radius:20px;font-size:0.75rem;cursor:pointer;font-family:'Outfit',sans-serif;">
+    ▮ Portrait / Shorts
+  </button>
+</div>
       </div>
     </div>
     <div style="margin-bottom:2rem;">
@@ -307,6 +321,32 @@
     const btn = document.querySelector('#prop19-card button');
     if (btn) { btn.textContent = '✅ Downloaded!'; btn.style.background = '#2ECC71'; btn.disabled = true; }
   }
+  function setVideoFormat(type) {
+  const wrapper = document.getElementById('video-wrapper');
+  const btnL = document.getElementById('btn-landscape');
+  const btnP = document.getElementById('btn-portrait');
+  if (type === 'portrait') {
+    wrapper.style.paddingBottom = '177.78%';
+    wrapper.style.maxWidth = '315px';
+    wrapper.style.margin = '0 auto';
+    btnP.style.background = '#C9A96E';
+    btnP.style.color = '#0A0A0A';
+    btnP.style.border = 'none';
+    btnL.style.background = 'rgba(201,169,110,0.2)';
+    btnL.style.color = '#C9A96E';
+    btnL.style.border = '1px solid rgba(201,169,110,0.3)';
+  } else {
+    wrapper.style.paddingBottom = '56.25%';
+    wrapper.style.maxWidth = '100%';
+    wrapper.style.margin = '0';
+    btnL.style.background = '#C9A96E';
+    btnL.style.color = '#0A0A0A';
+    btnL.style.border = 'none';
+    btnP.style.background = 'rgba(201,169,110,0.2)';
+    btnP.style.color = '#C9A96E';
+    btnP.style.border = '1px solid rgba(201,169,110,0.3)';
+  }
+}
 </script>
 </body>
 </html>
