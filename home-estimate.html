@@ -1,0 +1,842 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Janice Chen | Realtor® | Free Home Estimate</title>
+<!-- EmailJS SDK -->
+<script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+<script>
+  // ============================================
+  // 🔧 YOUR EMAILJS SETTINGS — 替換這三個值
+  // ============================================
+  const EMAILJS_PUBLIC_KEY       = 'YOUR_PUBLIC_KEY';       // Account > General > Public Key
+  const EMAILJS_SERVICE_ID       = 'YOUR_SERVICE_ID';       // Email Services > Service ID
+  const EMAILJS_TEMPLATE_ID      = 'YOUR_TEMPLATE_ID';      // Email Templates > Your notification template
+  const EMAILJS_CLIENT_TEMPLATE  = 'YOUR_CLIENT_TEMPLATE_ID'; // Email Templates > Client confirmation template
+  // ============================================
+  (function(){ emailjs.init(EMAILJS_PUBLIC_KEY); })();
+</script>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;600;700&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --navy: #0A1628;
+    --navy-2: #112240;
+    --navy-3: #1A3A5C;
+    --blue: #1D5FA6;
+    --blue-light: #2E80D8;
+    --sky: #64B5F6;
+    --white: #FFFFFF;
+    --off-white: #F4F8FF;
+    --text: #1A2942;
+    --text-muted: #5A7090;
+    --border: rgba(29,95,166,0.18);
+    --success: #2ECC71;
+    --shadow: 0 8px 40px rgba(10,22,40,0.13);
+    --shadow-blue: 0 8px 32px rgba(29,95,166,0.18);
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body { font-family: 'Outfit', sans-serif; background: var(--off-white); color: var(--text); overflow-x: hidden; }
+
+  /* NAV */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    background: rgba(10,22,40,0.97); backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(100,181,246,0.12);
+    padding: 0 5%; display: flex; align-items: center; justify-content: space-between; height: 68px;
+  }
+  .nav-logo { font-family: 'Cormorant Garamond', serif; font-size: 1.35rem; font-weight: 600; color: var(--white); letter-spacing: 0.02em; }
+  .nav-logo span { color: var(--sky); }
+  .nav-links { display: flex; gap: 2rem; list-style: none; }
+  .nav-links a { color: rgba(255,255,255,0.75); text-decoration: none; font-size: 0.88rem; font-weight: 400; letter-spacing: 0.04em; text-transform: uppercase; transition: color 0.2s; }
+  .nav-links a:hover { color: var(--sky); }
+  .nav-cta { background: var(--blue); color: var(--white); padding: 0.5rem 1.2rem; border-radius: 6px; font-size: 0.85rem; font-weight: 500; text-decoration: none; transition: background 0.2s, transform 0.15s; border: none; cursor: pointer; }
+  .nav-cta:hover { background: var(--blue-light); transform: translateY(-1px); }
+
+  /* HERO */
+  .hero {
+    min-height: 100vh;
+    background: linear-gradient(135deg, var(--navy) 0%, var(--navy-2) 55%, #0E2E50 100%);
+    display: flex; align-items: center; padding: 100px 5% 60px; position: relative; overflow: hidden;
+  }
+  .hero::before { content: ''; position: absolute; top: -100px; right: -100px; width: 600px; height: 600px; background: radial-gradient(circle, rgba(29,95,166,0.25) 0%, transparent 70%); border-radius: 50%; }
+  .hero::after { content: ''; position: absolute; bottom: -80px; left: -80px; width: 400px; height: 400px; background: radial-gradient(circle, rgba(100,181,246,0.1) 0%, transparent 70%); border-radius: 50%; }
+  .hero-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center; max-width: 1200px; margin: 0 auto; width: 100%; position: relative; z-index: 1; }
+  .hero-badge { display: inline-flex; align-items: center; gap: 0.5rem; background: rgba(100,181,246,0.12); border: 1px solid rgba(100,181,246,0.3); color: var(--sky); padding: 0.4rem 1rem; border-radius: 100px; font-size: 0.78rem; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 1.5rem; animation: fadeUp 0.6s ease both; }
+  .hero-badge::before { content: '★'; font-size: 0.65rem; }
+  .hero-title { font-family: 'Cormorant Garamond', serif; font-size: clamp(2.8rem, 5vw, 4.2rem); font-weight: 700; line-height: 1.1; color: var(--white); margin-bottom: 1rem; animation: fadeUp 0.6s 0.1s ease both; }
+  .hero-title span { color: var(--sky); }
+  .hero-subtitle { font-size: 1.05rem; color: rgba(255,255,255,0.65); line-height: 1.7; margin-bottom: 2rem; font-weight: 300; animation: fadeUp 0.6s 0.2s ease both; }
+  .hero-stats { display: flex; gap: 2.5rem; margin-bottom: 2.5rem; animation: fadeUp 0.6s 0.3s ease both; }
+  .stat-num { font-family: 'Cormorant Garamond', serif; font-size: 2rem; font-weight: 700; color: var(--sky); line-height: 1; }
+  .stat-label { font-size: 0.78rem; color: rgba(255,255,255,0.5); text-transform: uppercase; letter-spacing: 0.06em; margin-top: 0.2rem; }
+  .hero-btns { display: flex; gap: 1rem; flex-wrap: wrap; animation: fadeUp 0.6s 0.4s ease both; }
+  .btn-primary { background: var(--blue); color: var(--white); padding: 0.85rem 1.8rem; border-radius: 8px; font-size: 0.95rem; font-weight: 500; text-decoration: none; border: none; cursor: pointer; transition: all 0.2s; display: inline-block; box-shadow: var(--shadow-blue); }
+  .btn-primary:hover { background: var(--blue-light); transform: translateY(-2px); }
+  .btn-outline { background: transparent; color: var(--white); padding: 0.85rem 1.8rem; border-radius: 8px; font-size: 0.95rem; font-weight: 400; text-decoration: none; border: 1px solid rgba(255,255,255,0.25); cursor: pointer; transition: all 0.2s; display: inline-block; }
+  .btn-outline:hover { border-color: var(--sky); color: var(--sky); }
+
+  /* Agent Card */
+  .agent-card { background: rgba(255,255,255,0.05); border: 1px solid rgba(100,181,246,0.2); border-radius: 20px; padding: 2.5rem; backdrop-filter: blur(10px); animation: fadeUp 0.6s 0.3s ease both; position: relative; overflow: hidden; }
+  .agent-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px; background: linear-gradient(90deg, var(--blue), var(--sky)); }
+  .agent-avatar { width: 100px; height: 100px; border-radius: 50%; background: linear-gradient(135deg, var(--blue), var(--sky)); display: flex; align-items: center; justify-content: center; font-family: 'Cormorant Garamond', serif; font-size: 2.5rem; font-weight: 700; color: white; margin: 0 auto 1.2rem; border: 3px solid rgba(100,181,246,0.4); box-shadow: 0 0 0 6px rgba(100,181,246,0.08); }
+  .agent-name { font-family: 'Cormorant Garamond', serif; font-size: 1.7rem; font-weight: 700; color: var(--white); text-align: center; margin-bottom: 0.3rem; }
+  .agent-title { font-size: 0.82rem; color: var(--sky); text-align: center; letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 1.5rem; }
+  .agent-divider { height: 1px; background: rgba(100,181,246,0.15); margin-bottom: 1.5rem; }
+  .agent-info { display: flex; flex-direction: column; gap: 0.7rem; }
+  .agent-info-item { display: flex; align-items: center; gap: 0.7rem; font-size: 0.88rem; color: rgba(255,255,255,0.7); }
+  .info-icon { width: 30px; height: 30px; border-radius: 8px; background: rgba(29,95,166,0.3); border: 1px solid rgba(100,181,246,0.2); display: flex; align-items: center; justify-content: center; font-size: 0.85rem; flex-shrink: 0; }
+  .agent-badges { display: flex; gap: 0.5rem; flex-wrap: wrap; margin-top: 1.2rem; }
+  .badge { background: rgba(29,95,166,0.25); border: 1px solid rgba(100,181,246,0.2); color: var(--sky); padding: 0.3rem 0.7rem; border-radius: 100px; font-size: 0.75rem; font-weight: 500; }
+
+  /* SECTIONS */
+  section { padding: 90px 5%; }
+  .section-tag { display: inline-block; font-size: 0.75rem; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: var(--blue); margin-bottom: 0.8rem; }
+  .section-title { font-family: 'Cormorant Garamond', serif; font-size: clamp(2rem, 3.5vw, 2.8rem); font-weight: 700; color: var(--text); margin-bottom: 1rem; line-height: 1.2; }
+  .section-sub { font-size: 1rem; color: var(--text-muted); line-height: 1.7; max-width: 520px; }
+  .center { text-align: center; }
+  .center .section-sub { margin: 0 auto; }
+
+  /* ABOUT */
+  .about { background: var(--white); }
+  .about-grid { display: grid; grid-template-columns: 1fr 1.1fr; gap: 5rem; align-items: center; max-width: 1100px; margin: 0 auto; }
+  .about-photo-placeholder { width: 100%; aspect-ratio: 4/5; background: linear-gradient(135deg, var(--navy) 0%, var(--navy-3) 100%); border-radius: 20px; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 1rem; border: 1px solid var(--border); position: relative; overflow: hidden; }
+  .about-photo-placeholder::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 4px; background: linear-gradient(90deg, var(--blue), var(--sky), var(--blue)); }
+  .photo-icon { width: 80px; height: 80px; border-radius: 50%; background: linear-gradient(135deg, var(--blue), var(--sky)); display: flex; align-items: center; justify-content: center; font-size: 2.2rem; }
+  .photo-label { font-size: 0.85rem; color: rgba(255,255,255,0.45); text-align: center; line-height: 1.6; }
+  .about-visual { position: relative; }
+  .about-accent { position: absolute; bottom: -20px; right: -20px; background: var(--blue); color: white; padding: 1.2rem 1.5rem; border-radius: 14px; text-align: center; box-shadow: var(--shadow-blue); }
+  .about-accent-num { font-family: 'Cormorant Garamond', serif; font-size: 2rem; font-weight: 700; display: block; }
+  .about-accent-text { font-size: 0.78rem; opacity: 0.85; }
+  .about-text p { font-size: 0.97rem; color: var(--text-muted); line-height: 1.8; margin-bottom: 1rem; }
+  .about-specialties { display: grid; grid-template-columns: 1fr 1fr; gap: 0.7rem; margin-top: 1.8rem; }
+  .specialty-item { display: flex; align-items: center; gap: 0.6rem; font-size: 0.88rem; color: var(--text); padding: 0.6rem 0.9rem; background: var(--off-white); border-radius: 8px; border: 1px solid var(--border); }
+  .specialty-item::before { content: '✓'; color: var(--blue); font-weight: 700; }
+
+  /* SERVICES */
+  .services { background: var(--off-white); }
+  .services-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; margin-top: 3rem; max-width: 1100px; margin-left: auto; margin-right: auto; }
+  .service-card { background: var(--white); border-radius: 16px; padding: 2rem 1.8rem; border: 1px solid var(--border); transition: all 0.3s; position: relative; overflow: hidden; }
+  .service-card::after { content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 3px; background: linear-gradient(90deg, var(--blue), var(--sky)); transform: scaleX(0); transition: transform 0.3s; transform-origin: left; }
+  .service-card:hover { transform: translateY(-5px); box-shadow: var(--shadow); border-color: rgba(29,95,166,0.3); }
+  .service-card:hover::after { transform: scaleX(1); }
+  .service-icon { width: 52px; height: 52px; border-radius: 14px; background: linear-gradient(135deg, rgba(29,95,166,0.1), rgba(100,181,246,0.1)); border: 1px solid var(--border); display: flex; align-items: center; justify-content: center; font-size: 1.4rem; margin-bottom: 1.2rem; }
+  .service-name { font-family: 'Cormorant Garamond', serif; font-size: 1.25rem; font-weight: 700; color: var(--text); margin-bottom: 0.6rem; }
+  .service-desc { font-size: 0.88rem; color: var(--text-muted); line-height: 1.7; }
+
+  /* ESTIMATE */
+  .estimate { background: var(--navy); position: relative; overflow: hidden; }
+  .estimate::before { content: ''; position: absolute; top: -150px; right: -150px; width: 500px; height: 500px; background: radial-gradient(circle, rgba(29,95,166,0.2) 0%, transparent 70%); border-radius: 50%; }
+  .estimate-inner { max-width: 800px; margin: 0 auto; position: relative; z-index: 1; }
+  .estimate .section-title { color: var(--white); }
+  .estimate .section-sub { color: rgba(255,255,255,0.55); }
+  .estimate .section-tag { color: var(--sky); }
+
+  /* Progress */
+  .progress-wrap { margin: 2.5rem 0 1rem; }
+  .progress-steps { display: flex; align-items: center; justify-content: center; gap: 0; margin-bottom: 0.5rem; }
+  .step-dot { width: 36px; height: 36px; border-radius: 50%; background: rgba(255,255,255,0.08); border: 2px solid rgba(255,255,255,0.15); display: flex; align-items: center; justify-content: center; font-size: 0.82rem; font-weight: 600; color: rgba(255,255,255,0.4); transition: all 0.3s; flex-shrink: 0; }
+  .step-dot.active { background: var(--blue); border-color: var(--blue); color: white; box-shadow: 0 0 0 4px rgba(29,95,166,0.3); }
+  .step-dot.done { background: var(--success); border-color: var(--success); color: white; }
+  .step-line { flex: 1; height: 2px; background: rgba(255,255,255,0.1); max-width: 120px; transition: background 0.3s; }
+  .step-line.done { background: var(--success); }
+  .step-labels { display: flex; justify-content: space-between; max-width: 400px; margin: 0.5rem auto 0; }
+  .step-label { font-size: 0.72rem; color: rgba(255,255,255,0.4); text-align: center; flex: 1; text-transform: uppercase; letter-spacing: 0.05em; transition: color 0.3s; }
+  .step-label.active { color: var(--sky); }
+
+  /* Form */
+  .form-box { background: rgba(255,255,255,0.04); border: 1px solid rgba(100,181,246,0.15); border-radius: 20px; padding: 2.5rem; backdrop-filter: blur(8px); margin-top: 2rem; }
+  .form-panel { display: none; animation: fadeUp 0.35s ease; }
+  .form-panel.active { display: block; }
+  .form-panel-title { font-family: 'Cormorant Garamond', serif; font-size: 1.5rem; font-weight: 700; color: var(--white); margin-bottom: 0.4rem; }
+  .form-panel-sub { font-size: 0.88rem; color: rgba(255,255,255,0.45); margin-bottom: 1.8rem; line-height: 1.5; }
+  .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+  .form-group { margin-bottom: 1.2rem; }
+  .form-label { display: block; font-size: 0.8rem; color: rgba(255,255,255,0.6); margin-bottom: 0.45rem; font-weight: 500; letter-spacing: 0.04em; text-transform: uppercase; }
+  .form-input { width: 100%; background: rgba(255,255,255,0.07); border: 1px solid rgba(100,181,246,0.2); border-radius: 10px; padding: 0.85rem 1rem; color: var(--white); font-size: 0.95rem; font-family: 'Outfit', sans-serif; transition: border-color 0.2s, background 0.2s; outline: none; }
+  .form-input::placeholder { color: rgba(255,255,255,0.25); }
+  .form-input:focus { border-color: var(--blue-light); background: rgba(255,255,255,0.1); }
+  .form-select { width: 100%; background: rgba(255,255,255,0.07); border: 1px solid rgba(100,181,246,0.2); border-radius: 10px; padding: 0.85rem 1rem; color: var(--white); font-size: 0.95rem; font-family: 'Outfit', sans-serif; outline: none; cursor: pointer; transition: border-color 0.2s; appearance: none; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath stroke='%2364B5F6' stroke-width='1.5' fill='none' d='M1 1l5 5 5-5'/%3E%3C/svg%3E"); background-repeat: no-repeat; background-position: right 1rem center; }
+  .form-select option { background: var(--navy-2); color: var(--white); }
+  .form-select:focus { border-color: var(--blue-light); }
+  .form-consent { font-size: 0.78rem; color: rgba(255,255,255,0.35); line-height: 1.6; margin-top: 1rem; margin-bottom: 1.5rem; }
+  .btn-next { width: 100%; background: linear-gradient(135deg, var(--blue), var(--blue-light)); color: white; border: none; border-radius: 10px; padding: 1rem; font-size: 1rem; font-weight: 600; font-family: 'Outfit', sans-serif; cursor: pointer; transition: all 0.2s; letter-spacing: 0.02em; box-shadow: 0 4px 20px rgba(29,95,166,0.4); }
+  .btn-next:hover { transform: translateY(-2px); box-shadow: 0 8px 30px rgba(29,95,166,0.5); }
+  .btn-back { background: transparent; color: rgba(255,255,255,0.5); border: 1px solid rgba(255,255,255,0.15); border-radius: 10px; padding: 0.9rem; font-size: 0.9rem; font-family: 'Outfit', sans-serif; cursor: pointer; transition: all 0.2s; margin-bottom: 0.8rem; width: 100%; }
+  .btn-back:hover { color: var(--white); border-color: rgba(255,255,255,0.3); }
+  .form-input.error, .form-select.error { border-color: #E74C3C; }
+  .error-msg { font-size: 0.75rem; color: #E74C3C; margin-top: 0.3rem; display: none; }
+  .error-msg.show { display: block; }
+
+  /* Result */
+  .result-panel { display: none; text-align: center; animation: fadeUp 0.5s ease; }
+  .result-panel.show { display: block; }
+  .result-icon { width: 80px; height: 80px; border-radius: 50%; background: linear-gradient(135deg, var(--success), #27AE60); display: flex; align-items: center; justify-content: center; font-size: 2rem; margin: 0 auto 1.5rem; box-shadow: 0 0 0 12px rgba(46,204,113,0.1); animation: pop 0.4s 0.2s ease both; }
+  .result-title { font-family: 'Cormorant Garamond', serif; font-size: 2rem; font-weight: 700; color: var(--white); margin-bottom: 0.5rem; }
+  .result-sub { font-size: 0.95rem; color: rgba(255,255,255,0.55); margin-bottom: 2rem; line-height: 1.6; }
+  .result-box { background: rgba(255,255,255,0.06); border: 1px solid rgba(100,181,246,0.2); border-radius: 14px; padding: 1.5rem; margin-bottom: 1.5rem; text-align: left; }
+  .result-box-title { font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--sky); margin-bottom: 1rem; }
+  .result-address { font-size: 1.1rem; color: var(--white); font-weight: 500; margin-bottom: 0.3rem; }
+  .result-detail { font-size: 0.88rem; color: rgba(255,255,255,0.5); }
+
+
+
+
+  .result-note { font-size: 0.78rem; color: rgba(255,255,255,0.3); margin-top: 1rem; line-height: 1.5; }
+
+  /* TESTIMONIALS */
+  .testimonials { background: var(--white); }
+  .testimonials-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; margin-top: 3rem; max-width: 1100px; margin-left: auto; margin-right: auto; }
+  .testimonial-card { background: var(--off-white); border-radius: 16px; padding: 1.8rem; border: 1px solid var(--border); transition: all 0.3s; }
+  .testimonial-card:hover { transform: translateY(-3px); box-shadow: var(--shadow); }
+  .stars { color: #F5A623; font-size: 0.85rem; margin-bottom: 1rem; letter-spacing: 0.1em; }
+  .testimonial-text { font-size: 0.92rem; color: var(--text-muted); line-height: 1.75; margin-bottom: 1.2rem; font-style: italic; }
+  .testimonial-author { font-size: 0.88rem; font-weight: 600; color: var(--text); }
+  .testimonial-location { font-size: 0.78rem; color: var(--text-muted); }
+
+  /* FOOTER */
+  footer { background: var(--navy); color: rgba(255,255,255,0.5); padding: 3rem 5%; text-align: center; border-top: 1px solid rgba(100,181,246,0.1); }
+  .footer-name { font-family: 'Cormorant Garamond', serif; font-size: 1.5rem; font-weight: 700; color: var(--white); margin-bottom: 0.4rem; }
+  .footer-info { font-size: 0.83rem; margin-bottom: 0.5rem; line-height: 1.8; }
+  .footer-legal { font-size: 0.75rem; margin-top: 1.5rem; opacity: 0.5; }
+
+  /* ANIMATIONS */
+  @keyframes fadeUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+  @keyframes pop { from { transform: scale(0.5); opacity: 0; } to { transform: scale(1); opacity: 1; } }
+
+  /* RESPONSIVE */
+  @media (max-width: 900px) {
+    .hero-grid, .about-grid { grid-template-columns: 1fr; gap: 2.5rem; }
+    .services-grid, .testimonials-grid { grid-template-columns: 1fr; }
+    .form-row { grid-template-columns: 1fr; }
+    .hero-stats { gap: 1.5rem; }
+    .agent-card { display: none; }
+    .nav-links { display: none; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-logo">Janice <span>Chen</span></div>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#services">Services</a></li>
+    <li><a href="#estimate">Home Value</a></li>
+    <li><a href="#reviews">Reviews</a></li>
+  </ul>
+  <a href="#estimate" class="nav-cta">Free Home Estimate</a>
+</nav>
+
+<!-- HERO -->
+<section class="hero" id="home">
+  <div class="hero-grid">
+    <div>
+      <div class="hero-badge">Top Producing Realtor® · SoCal Specialist</div>
+      <h1 class="hero-title">Your Home.<br>Your <span>Best Deal.</span></h1>
+      <p class="hero-subtitle">With over a decade of experience in Southern California real estate, I help buyers and sellers achieve their goals — with expert strategy, sharp negotiation, and a personal touch.</p>
+      <div class="hero-stats">
+        <div class="stat-item"><div class="stat-num">$50M+</div><div class="stat-label">Sold Volume</div></div>
+        <div class="stat-item"><div class="stat-num">200+</div><div class="stat-label">Happy Clients</div></div>
+        <div class="stat-item"><div class="stat-num">12+</div><div class="stat-label">Years Exp.</div></div>
+      </div>
+      <div class="hero-btns">
+        <a href="#estimate" class="btn-primary">Get Free Home Estimate</a>
+        <a href="#about" class="btn-outline">About Me</a>
+      </div>
+    </div>
+    <div>
+      <div class="agent-card">
+        <div class="agent-avatar">JC</div>
+        <div class="agent-name">Janice Chen</div>
+        <div class="agent-title">Realtor® · DRE# 02XXXXXX</div>
+        <div class="agent-divider"></div>
+        <div class="agent-info">
+          <div class="agent-info-item"><div class="info-icon">📍</div>Southern California · IE &amp; OC Specialist</div>
+          <div class="agent-info-item"><div class="info-icon">📞</div>(909) 000-0000</div>
+          <div class="agent-info-item"><div class="info-icon">✉️</div>janice@realestate.com</div>
+          <div class="agent-info-item"><div class="info-icon">🏢</div>Keller Williams Realty</div>
+        </div>
+        <div class="agent-badges">
+          <span class="badge">Buyer Rep</span>
+          <span class="badge">Listing Agent</span>
+          <span class="badge">Investment</span>
+          <span class="badge">New Construction</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section class="about" id="about">
+  <div class="about-grid">
+    <div class="about-visual">
+      <div class="about-photo-placeholder" style="padding:0;overflow:hidden;">
+        <img src="janice.jpg" alt="Janice Chen" 
+          style="width:100%;height:100%;object-fit:cover;object-position:top;border-radius:20px;"
+          onerror="this.style.display='none';document.getElementById('photo-fallback').style.display='flex';">
+        <div id="photo-fallback" style="display:none;flex-direction:column;align-items:center;justify-content:center;gap:1rem;width:100%;height:100%;position:absolute;top:0;left:0;">
+          <div style="width:80px;height:80px;border-radius:50%;background:linear-gradient(135deg,#1D5FA6,#64B5F6);display:flex;align-items:center;justify-content:center;font-size:2.2rem;">👩‍💼</div>
+          <div style="font-size:0.85rem;color:rgba(255,255,255,0.45);text-align:center;line-height:1.6;">Add janice.jpg to<br>your website folder</div>
+        </div>
+      </div>
+
+    </div>
+    <div class="about-text">
+      <div class="section-tag">About Me</div>
+      <h2 class="section-title">More Than Just<br>a Realtor®</h2>
+      <p>I'm Janice Chen, a dedicated real estate professional serving the Inland Empire and Orange County markets. My mission is simple: help every client make the smartest real estate decision possible — whether you're buying your first home, selling an investment property, or building long-term wealth.</p>
+      <p>I bring a data-driven approach to every transaction, combining deep local market knowledge with sharp negotiation skills and genuine care for my clients' best interests.</p>
+      <div class="about-specialties">
+        <div class="specialty-item">First-Time Buyers</div>
+        <div class="specialty-item">Luxury Homes</div>
+        <div class="specialty-item">Investment Properties</div>
+        <div class="specialty-item">New Construction</div>
+        <div class="specialty-item">Seller Representation</div>
+        <div class="specialty-item">Relocation Services</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section class="services" id="services">
+  <div class="center">
+    <div class="section-tag">What I Offer</div>
+    <h2 class="section-title">Full-Service Real Estate</h2>
+    <p class="section-sub">From your first showing to closing day, I handle every detail so you can focus on what matters most.</p>
+  </div>
+  <div class="services-grid">
+    <div class="service-card">
+      <div class="service-icon">🏠</div>
+      <div class="service-name">Home Selling</div>
+      <p class="service-desc">Strategic pricing, professional staging guidance, targeted marketing, and expert negotiation to maximize your sale price.</p>
+    </div>
+    <div class="service-card">
+      <div class="service-icon">🔑</div>
+      <div class="service-name">Home Buying</div>
+      <p class="service-desc">Personalized property search, offer strategy, inspection coordination, and advocacy through every step of the process.</p>
+    </div>
+    <div class="service-card">
+      <div class="service-icon">📊</div>
+      <div class="service-name">Market Analysis</div>
+      <p class="service-desc">Detailed CMA reports, neighborhood trend analysis, and investment return projections based on current market data.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ESTIMATE FORM -->
+<section class="estimate" id="estimate">
+  <div class="estimate-inner">
+    <div class="center">
+      <div class="section-tag">Free Home Estimate</div>
+      <h2 class="section-title">What Is Your Home Worth?</h2>
+      <p class="section-sub">Get a professional home value estimate — instantly and completely free. No obligation, no pressure.</p>
+    </div>
+
+    <div class="progress-wrap">
+      <div class="progress-steps">
+        <div class="step-dot active" id="dot1">1</div>
+        <div class="step-line" id="line1"></div>
+        <div class="step-dot" id="dot2">2</div>
+        <div class="step-line" id="line2"></div>
+        <div class="step-dot" id="dot3">3</div>
+      </div>
+      <div class="step-labels">
+        <div class="step-label active" id="label1">Contact Info</div>
+        <div class="step-label" id="label2">Property</div>
+        <div class="step-label" id="label3">Results</div>
+      </div>
+    </div>
+
+    <div class="form-box">
+      <!-- Step 1 -->
+      <div class="form-panel active" id="panel1">
+        <div class="form-panel-title">Let's Get Started 👋</div>
+        <div class="form-panel-sub">Enter your contact details first — then we'll look up your home's value.</div>
+        <div class="form-row">
+          <div class="form-group">
+            <label class="form-label">First Name *</label>
+            <input type="text" class="form-input" id="firstName" placeholder="Jane">
+            <div class="error-msg" id="err-firstName">Please enter your first name.</div>
+          </div>
+          <div class="form-group">
+            <label class="form-label">Last Name *</label>
+            <input type="text" class="form-input" id="lastName" placeholder="Smith">
+            <div class="error-msg" id="err-lastName">Please enter your last name.</div>
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="form-label">Email Address *</label>
+          <input type="email" class="form-input" id="email" placeholder="jane@email.com">
+          <div class="error-msg" id="err-email">Please enter a valid email address.</div>
+        </div>
+        <div class="form-group">
+          <label class="form-label">Phone Number *</label>
+          <input type="tel" class="form-input" id="phone" placeholder="(909) 000-0000">
+          <div class="error-msg" id="err-phone">Please enter your phone number.</div>
+        </div>
+        <div class="form-group">
+          <label class="form-label">When are you thinking of selling?</label>
+          <select class="form-select" id="timeline">
+            <option value="">Select a timeline</option>
+            <option>ASAP — Ready now</option>
+            <option>1–3 months</option>
+            <option>3–6 months</option>
+            <option>6–12 months</option>
+            <option>Just curious about my value</option>
+          </select>
+        </div>
+        <div class="form-consent">By clicking Next, you agree to be contacted by Janice Chen regarding your home estimate. Your information is kept private and will never be sold to third parties.</div>
+        <button class="btn-next" onclick="goToStep2()">Next: Enter Your Property Address →</button>
+      </div>
+
+      <!-- Step 2 -->
+      <div class="form-panel" id="panel2">
+        <div class="form-panel-title">Your Property Details 🏡</div>
+        <div class="form-panel-sub">Now enter your property address to get your free estimate.</div>
+        <div class="form-group">
+          <label class="form-label">Property Address *</label>
+          <input type="text" class="form-input" id="address" placeholder="123 Main Street">
+          <div class="error-msg" id="err-address">Please enter your property address.</div>
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label class="form-label">City *</label>
+            <input type="text" class="form-input" id="city" placeholder="Chino Hills">
+            <div class="error-msg" id="err-city">Please enter your city.</div>
+          </div>
+          <div class="form-group">
+            <label class="form-label">State &amp; Zip *</label>
+            <input type="text" class="form-input" id="zip" placeholder="CA 91709">
+            <div class="error-msg" id="err-zip">Please enter your state and zip.</div>
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label class="form-label">Property Type</label>
+            <select class="form-select" id="propType">
+              <option value="">Select type</option>
+              <option>Single Family Home</option>
+              <option>Condo / Townhouse</option>
+              <option>Multi-Family</option>
+              <option>Land / Lot</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label class="form-label">Approx. Sq. Ft.</label>
+            <input type="text" class="form-input" id="sqft" placeholder="e.g. 2,200">
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label class="form-label">Bedrooms</label>
+            <select class="form-select" id="beds">
+              <option value="">Select</option>
+              <option>1</option><option>2</option><option>3</option>
+              <option>4</option><option>5</option><option>6+</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label class="form-label">Bathrooms</label>
+            <select class="form-select" id="baths">
+              <option value="">Select</option>
+              <option>1</option><option>1.5</option><option>2</option>
+              <option>2.5</option><option>3</option><option>3.5</option><option>4+</option>
+            </select>
+          </div>
+        </div>
+        <button class="btn-back" onclick="goToStep1()">← Back</button>
+        <button class="btn-next" onclick="submitForm()">Get My Free Estimate 🏠</button>
+      </div>
+
+      <!-- Result -->
+      <div class="result-panel" id="resultPanel">
+        <div class="result-icon">✓</div>
+        <div class="result-title">You're All Set!</div>
+        <div class="result-sub">Thank you! I'm personally preparing your customized home estimate report.<br><br>You will receive a detailed, accurate CMA — not just an automated guess — within <strong>12 hours</strong>.</div>
+        <div class="result-box">
+          <div class="result-box-title">Property Submitted</div>
+          <div class="result-address" id="result-addr">—</div>
+          <div class="result-detail" id="result-detail">—</div>
+        </div>
+        
+        
+        <div style="background:rgba(29,95,166,0.15);border:1px solid rgba(100,181,246,0.3);border-radius:14px;padding:1.5rem;margin-top:1rem;text-align:left;">
+          <div style="font-size:0.8rem;text-transform:uppercase;letter-spacing:0.1em;color:#64B5F6;margin-bottom:0.8rem;">⚡ What Happens Next</div>
+          <div style="display:flex;flex-direction:column;gap:0.8rem;">
+            <div style="display:flex;align-items:center;gap:0.8rem;font-size:0.9rem;color:rgba(255,255,255,0.8);">
+              <div style="width:28px;height:28px;border-radius:50%;background:#1D5FA6;display:flex;align-items:center;justify-content:center;font-size:0.8rem;flex-shrink:0;">1</div>
+              Janice reviews your property details
+            </div>
+            <div style="display:flex;align-items:center;gap:0.8rem;font-size:0.9rem;color:rgba(255,255,255,0.8);">
+              <div style="width:28px;height:28px;border-radius:50%;background:#1D5FA6;display:flex;align-items:center;justify-content:center;font-size:0.8rem;flex-shrink:0;">2</div>
+              A personalized Cloud CMA report is prepared for you
+            </div>
+            <div style="display:flex;align-items:center;gap:0.8rem;font-size:0.9rem;color:rgba(255,255,255,0.8);">
+              <div style="width:28px;height:28px;border-radius:50%;background:#1D5FA6;display:flex;align-items:center;justify-content:center;font-size:0.8rem;flex-shrink:0;">3</div>
+              You receive your full home estimate within 12 hours
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section class="testimonials" id="reviews">
+  <div class="center">
+    <div class="section-tag">Client Reviews</div>
+    <h2 class="section-title">What My Clients Say</h2>
+  </div>
+  <div class="testimonials-grid">
+    <div class="testimonial-card">
+      <div class="stars">★★★★★</div>
+      <div class="testimonial-text">"Janice sold our home in Chino Hills for above asking price in just 8 days. Her marketing was exceptional and she kept us informed every step of the way."</div>
+      <div class="testimonial-author">David &amp; Michelle T.</div>
+      <div class="testimonial-location">Chino Hills, CA</div>
+    </div>
+    <div class="testimonial-card">
+      <div class="stars">★★★★★</div>
+      <div class="testimonial-text">"As first-time buyers, we were nervous. Janice made it seamless. She helped us get the home we wanted in a competitive multiple-offer situation."</div>
+      <div class="testimonial-author">Kevin L.</div>
+      <div class="testimonial-location">Ontario, CA</div>
+    </div>
+    <div class="testimonial-card">
+      <div class="stars">★★★★★</div>
+      <div class="testimonial-text">"Janice is incredibly knowledgeable about investment properties. She helped me analyze ROI and found us a great cash-flowing rental. Highly recommend!"</div>
+      <div class="testimonial-author">Sandra W.</div>
+      <div class="testimonial-location">Irvine, CA</div>
+    </div>
+  </div>
+</section>
+
+<!-- QR LANDING PAGE -->
+<section id="resources" style="background:#F4F8FF;padding:80px 5%;">
+  <div style="max-width:1100px;margin:0 auto;">
+    <div style="text-align:center;margin-bottom:3rem;">
+      <div style="font-size:0.75rem;font-weight:600;letter-spacing:0.12em;text-transform:uppercase;color:#1D5FA6;margin-bottom:0.8rem;">Free Resources</div>
+      <h2 style="font-family:'Cormorant Garamond',serif;font-size:clamp(2rem,3.5vw,2.8rem);font-weight:700;color:#1A2942;margin-bottom:1rem;">Welcome! 👋 Janice Chen Here</h2>
+      <p style="font-size:1rem;color:#5A7090;max-width:520px;margin:0 auto;line-height:1.7;">Watch my quick intro video and download any of the free resources below — no sign-up needed!</p>
+    </div>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:2.5rem;margin-bottom:3.5rem;align-items:center;">
+      <div style="background:#0A1628;border-radius:20px;padding:2.5rem;position:relative;overflow:hidden;">
+        <div style="position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,#1D5FA6,#64B5F6);"></div>
+        <div style="display:flex;align-items:center;gap:1.2rem;margin-bottom:1.5rem;">
+          <div style="width:70px;height:70px;border-radius:50%;background:linear-gradient(135deg,#1D5FA6,#64B5F6);display:flex;align-items:center;justify-content:center;font-family:'Cormorant Garamond',serif;font-size:1.6rem;font-weight:700;color:white;flex-shrink:0;overflow:hidden;">
+            <img src="janice.jpg" alt="Janice Chen" style="width:100%;height:100%;object-fit:cover;" onerror="this.style.display='none';this.parentElement.innerHTML='JC';">
+          </div>
+          <div>
+            <div style="font-family:'Cormorant Garamond',serif;font-size:1.4rem;font-weight:700;color:white;">Janice (Yu Wei) Chen</div>
+            <div style="font-size:0.78rem;color:#64B5F6;text-transform:uppercase;letter-spacing:0.1em;">MBA · Realtor® · DRE# 02140656</div>
+          </div>
+        </div>
+        <div style="display:flex;flex-direction:column;gap:0.6rem;margin-bottom:1.5rem;">
+          <div style="font-size:0.88rem;color:rgba(255,255,255,0.7);">🏢 Pinnacle Real Estate Group</div>
+          <div style="font-size:0.88rem;color:rgba(255,255,255,0.7);">📞 (951) 367-7321</div>
+          <div style="font-size:0.88rem;color:rgba(255,255,255,0.7);">✉️ janicechenhomes@gmail.com</div>
+          <div style="font-size:0.88rem;color:rgba(255,255,255,0.7);">📍 IE &amp; SoCal Specialist</div>
+        </div>
+        <div style="display:flex;gap:0.8rem;">
+          <a href="tel:9513677321" style="flex:1;background:#1D5FA6;color:white;padding:0.75rem;border-radius:8px;text-align:center;text-decoration:none;font-size:0.88rem;font-weight:600;">📞 Call</a>
+          <a href="mailto:janicechenhomes@gmail.com" style="flex:1;background:transparent;color:white;padding:0.75rem;border-radius:8px;text-align:center;text-decoration:none;font-size:0.88rem;border:1px solid rgba(255,255,255,0.2);">✉️ Email</a>
+          <a href="#estimate" style="flex:1;background:#C9A84C;color:#0A1628;padding:0.75rem;border-radius:8px;text-align:center;text-decoration:none;font-size:0.88rem;font-weight:700;">🏠 Estimate</a>
+        </div>
+      </div>
+      <!-- VIDEO PLACEHOLDER - Replace inner div with YouTube iframe when ready -->
+      <div style="background:#0A1628;border-radius:20px;overflow:hidden;position:relative;aspect-ratio:16/9;display:flex;flex-direction:column;align-items:center;justify-content:center;border:2px dashed rgba(100,181,246,0.3);">
+        <!-- TO ADD VIDEO: Replace this entire div content with:
+        <iframe width="100%" height="100%" src="https://www.youtube.com/embed/VIDEO_ID_HERE" frameborder="0" allowfullscreen style="position:absolute;top:0;left:0;width:100%;height:100%;"></iframe>
+        -->
+        <div style="font-size:3rem;margin-bottom:1rem;">🎥</div>
+        <div style="font-size:1rem;font-weight:600;color:white;margin-bottom:0.4rem;">Intro Video</div>
+        <div style="font-size:0.82rem;color:rgba(255,255,255,0.4);text-align:center;padding:0 2rem;">Search VIDEO_ID_HERE in VS Code<br>and replace with your YouTube ID</div>
+      </div>
+    </div>
+    <div style="margin-bottom:2rem;">
+      <div style="font-size:0.75rem;font-weight:600;letter-spacing:0.12em;text-transform:uppercase;color:#1D5FA6;margin-bottom:1rem;">📊 Eastvale Market Data — April 2026</div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:1.2rem;margin-bottom:2rem;">
+        <div style="background:white;border-radius:14px;overflow:hidden;border:1px solid rgba(29,95,166,0.12);box-shadow:0 4px 20px rgba(10,22,40,0.06);">
+          <img src="Sold_Listings.jpg" alt="April 2026 Sold Listings" style="width:100%;display:block;">
+          <div style="padding:1rem 1.2rem;">
+            <div style="font-size:0.88rem;font-weight:600;color:#1A2942;margin-bottom:0.3rem;">April 2026 Sold Listings</div>
+            <div style="font-size:0.78rem;color:#5A7090;">Eastvale · Median Sold Price $985,000</div>
+          </div>
+        </div>
+        <div style="background:white;border-radius:14px;overflow:hidden;border:1px solid rgba(29,95,166,0.12);box-shadow:0 4px 20px rgba(10,22,40,0.06);">
+          <img src="Median_Estimated_Property_Value.jpg" alt="Median Estimated Property Value" style="width:100%;display:block;">
+          <div style="padding:1rem 1.2rem;">
+            <div style="font-size:0.88rem;font-weight:600;color:#1A2942;margin-bottom:0.3rem;">Median Estimated Property Value</div>
+            <div style="font-size:0.78rem;color:#5A7090;">Eastvale · $967,870 · +4.3% (12 months)</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div style="font-size:0.75rem;font-weight:600;letter-spacing:0.12em;text-transform:uppercase;color:#1D5FA6;margin-bottom:1rem;">📥 Free Downloads</div>
+    <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:1.2rem;">
+      <div style="background:white;border-radius:16px;overflow:hidden;border:1px solid rgba(29,95,166,0.12);box-shadow:0 4px 20px rgba(10,22,40,0.06);display:flex;flex-direction:column;">
+        <div style="height:160px;overflow:hidden;">
+          <img src="thumb-market.jpg" alt="Market Report" style="width:100%;height:100%;object-fit:cover;object-position:top;">
+        </div>
+        <div style="padding:1.2rem;flex:1;display:flex;flex-direction:column;">
+          <div style="font-size:0.7rem;text-transform:uppercase;letter-spacing:0.08em;color:#1D5FA6;margin-bottom:0.4rem;">Market Report</div>
+          <div style="font-size:0.92rem;font-weight:600;color:#1A2942;margin-bottom:0.4rem;line-height:1.3;">Eastvale May 2026 Market Update</div>
+          <div style="font-size:0.78rem;color:#5A7090;margin-bottom:1rem;flex:1;">Latest real-time market data for Eastvale, CA</div>
+          <a href="eastvale_may_2026_market_update.pdf" download style="display:block;background:#1D5FA6;color:white;padding:0.65rem;border-radius:8px;text-align:center;text-decoration:none;font-size:0.82rem;font-weight:600;">⬇ Download</a>
+        </div>
+      </div>
+      <div style="background:white;border-radius:16px;overflow:hidden;border:1px solid rgba(29,95,166,0.12);box-shadow:0 4px 20px rgba(10,22,40,0.06);display:flex;flex-direction:column;">
+        <div style="height:160px;overflow:hidden;">
+          <img src="thumb-housing.jpg" alt="US Housing Prices" style="width:100%;height:100%;object-fit:cover;object-position:top;">
+        </div>
+        <div style="padding:1.2rem;flex:1;display:flex;flex-direction:column;">
+          <div style="font-size:0.7rem;text-transform:uppercase;letter-spacing:0.08em;color:#1D5FA6;margin-bottom:0.4rem;">Investment Guide</div>
+          <div style="font-size:0.92rem;font-weight:600;color:#1A2942;margin-bottom:0.4rem;line-height:1.3;">U.S. Housing Prices 1951–2025</div>
+          <div style="font-size:0.78rem;color:#5A7090;margin-bottom:1rem;flex:1;">75 years of data — prices only declined 7 times</div>
+          <a href="1951-2025_Light.pdf" download style="display:block;background:#1D5FA6;color:white;padding:0.65rem;border-radius:8px;text-align:center;text-decoration:none;font-size:0.82rem;font-weight:600;">⬇ Download</a>
+        </div>
+      </div>
+      <div style="background:white;border-radius:16px;overflow:hidden;border:1px solid rgba(29,95,166,0.12);box-shadow:0 4px 20px rgba(10,22,40,0.06);display:flex;flex-direction:column;">
+        <div style="height:160px;overflow:hidden;position:relative;">
+          <div style="display:flex;height:100%;">
+            <img src="thumb-presale-p1.jpg" alt="Pre-Sale Page 1" style="width:50%;height:100%;object-fit:cover;object-position:top;">
+            <img src="thumb-presale-p2.jpg" alt="Pre-Sale Page 2" style="width:50%;height:100%;object-fit:cover;object-position:top;border-left:2px solid white;">
+          </div>
+          <div style="position:absolute;bottom:6px;right:8px;background:rgba(10,22,40,0.7);color:white;font-size:0.65rem;padding:2px 7px;border-radius:10px;">2 pages</div>
+        </div>
+        <div style="padding:1.2rem;flex:1;display:flex;flex-direction:column;">
+          <div style="font-size:0.7rem;text-transform:uppercase;letter-spacing:0.08em;color:#1D5FA6;margin-bottom:0.4rem;">Seller Guide</div>
+          <div style="font-size:0.92rem;font-weight:600;color:#1A2942;margin-bottom:0.4rem;line-height:1.3;">Pre-Sale Inspection Reports</div>
+          <div style="font-size:0.78rem;color:#5A7090;margin-bottom:1rem;flex:1;">CA cities requiring building reports — costs &amp; contacts (2 pages)</div>
+          <a href="2_pages_pre-sales_inspection_with_janice_chen.pdf" download style="display:block;background:#1D5FA6;color:white;padding:0.65rem;border-radius:8px;text-align:center;text-decoration:none;font-size:0.82rem;font-weight:600;">⬇ Download (2 pages)</a>
+        </div>
+      </div>
+      <div style="background:white;border-radius:16px;overflow:hidden;border:1px solid rgba(29,95,166,0.12);box-shadow:0 4px 20px rgba(10,22,40,0.06);display:flex;flex-direction:column;">
+        <div style="height:160px;overflow:hidden;position:relative;">
+          <img src="thumb-prop19.jpg" alt="Proposition 19" style="width:100%;height:100%;object-fit:cover;object-position:top;filter:blur(3px);">
+          <div style="position:absolute;inset:0;background:rgba(10,22,40,0.6);display:flex;align-items:center;justify-content:center;">
+            <div style="text-align:center;"><div style="font-size:2rem;">🔒</div><div style="font-size:0.75rem;color:white;font-weight:600;margin-top:0.3rem;">Contact to Unlock</div></div>
+          </div>
+        </div>
+        <div style="padding:1.2rem;flex:1;display:flex;flex-direction:column;">
+          <div style="font-size:0.7rem;text-transform:uppercase;letter-spacing:0.08em;color:#C9A84C;margin-bottom:0.4rem;">55歲以上屋主優勢</div>
+          <div style="font-size:0.92rem;font-weight:600;color:#1A2942;margin-bottom:0.4rem;line-height:1.3;">Proposition 19 — 55+ Property Tax Benefits</div>
+          <div style="font-size:0.78rem;color:#5A7090;margin-bottom:1rem;flex:1;">19號法案對55歲及以上屋主的稅務優勢分析</div>
+          <button onclick="document.getElementById('prop19-modal').style.display='flex'" style="display:block;background:#C9A84C;color:#0A1628;padding:0.65rem;border-radius:8px;text-align:center;font-size:0.82rem;font-weight:700;border:none;cursor:pointer;width:100%;font-family:'Outfit',sans-serif;">🔓 Click to Unlock</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROP 19 UNLOCK MODAL -->
+<div id="prop19-modal" style="display:none;position:fixed;inset:0;background:rgba(0,0,0,0.75);z-index:999;align-items:center;justify-content:center;">
+  <div style="background:white;border-radius:20px;padding:2.5rem;max-width:420px;width:90%;position:relative;">
+    <div style="position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,#1D5FA6,#64B5F6);border-radius:20px 20px 0 0;"></div>
+    <div style="text-align:center;margin-bottom:1.5rem;">
+      <div style="font-size:2.5rem;margin-bottom:0.5rem;">🔒</div>
+      <h3 style="font-family:'Cormorant Garamond',serif;font-size:1.5rem;font-weight:700;color:#1A2942;margin-bottom:0.4rem;">Unlock Proposition 19 Report</h3>
+      <p style="font-size:0.85rem;color:#5A7090;line-height:1.6;">55歲及以上屋主的稅務優勢分析<br>Leave your contact and Janice will send you a personalized analysis!</p>
+    </div>
+    <div style="display:flex;flex-direction:column;gap:0.8rem;">
+      <input type="text" id="unlock-name" placeholder="Your Name *" style="width:100%;padding:0.85rem 1rem;border:1px solid rgba(29,95,166,0.2);border-radius:10px;font-family:'Outfit',sans-serif;font-size:0.95rem;outline:none;box-sizing:border-box;">
+      <input type="tel" id="unlock-phone" placeholder="Phone Number *" style="width:100%;padding:0.85rem 1rem;border:1px solid rgba(29,95,166,0.2);border-radius:10px;font-family:'Outfit',sans-serif;font-size:0.95rem;outline:none;box-sizing:border-box;">
+      <input type="email" id="unlock-email" placeholder="Email Address *" style="width:100%;padding:0.85rem 1rem;border:1px solid rgba(29,95,166,0.2);border-radius:10px;font-family:'Outfit',sans-serif;font-size:0.95rem;outline:none;box-sizing:border-box;">
+      <div id="unlock-error" style="display:none;color:#E74C3C;font-size:0.78rem;text-align:center;padding:0.4rem;"></div>
+      <button onclick="submitUnlock()" style="background:linear-gradient(135deg,#1D5FA6,#2E80D8);color:white;padding:1rem;border-radius:10px;border:none;font-size:1rem;font-weight:600;cursor:pointer;font-family:'Outfit',sans-serif;">Unlock Free Report →</button>
+      <button onclick="document.getElementById('prop19-modal').style.display='none'" style="background:transparent;color:#5A7090;border:none;font-size:0.85rem;cursor:pointer;font-family:'Outfit',sans-serif;padding:0.3rem;">Cancel</button>
+    </div>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-name">Janice Chen</div>
+  <div class="footer-info">
+    Realtor® · DRE# 02XXXXXX · Keller Williams Realty<br>
+    📞 (909) 000-0000 · ✉️ janice@realestate.com<br>
+    Serving Inland Empire &amp; Orange County, CA
+  </div>
+  <div class="footer-legal">© 2025 Janice Chen Real Estate. All rights reserved. Equal Housing Opportunity. Information deemed reliable but not guaranteed.</div>
+</footer>
+
+<script>
+  let leadData = {};
+
+  function showError(id, show) {
+    const err = document.getElementById('err-' + id);
+    const inp = document.getElementById(id);
+    if (err) err.classList.toggle('show', show);
+    if (inp) inp.classList.toggle('error', show);
+  }
+
+  ['firstName','lastName','email','phone','address','city','zip'].forEach(id => {
+    const el = document.getElementById(id);
+    if (el) el.addEventListener('input', () => showError(id, false));
+  });
+
+  function validateStep1() {
+    let ok = true;
+    const fn = document.getElementById('firstName').value.trim();
+    const ln = document.getElementById('lastName').value.trim();
+    const em = document.getElementById('email').value.trim();
+    const ph = document.getElementById('phone').value.trim();
+    if (!fn) { showError('firstName', true); ok = false; } else showError('firstName', false);
+    if (!ln) { showError('lastName', true); ok = false; } else showError('lastName', false);
+    if (!em || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(em)) { showError('email', true); ok = false; } else showError('email', false);
+    if (!ph) { showError('phone', true); ok = false; } else showError('phone', false);
+    return ok;
+  }
+
+  function validateStep2() {
+    let ok = true;
+    if (!document.getElementById('address').value.trim()) { showError('address', true); ok = false; } else showError('address', false);
+    if (!document.getElementById('city').value.trim()) { showError('city', true); ok = false; } else showError('city', false);
+    if (!document.getElementById('zip').value.trim()) { showError('zip', true); ok = false; } else showError('zip', false);
+    return ok;
+  }
+
+  function updateProgress(step) {
+    for (let i = 1; i <= 3; i++) {
+      const dot = document.getElementById('dot' + i);
+      const label = document.getElementById('label' + i);
+      dot.classList.remove('active','done');
+      label.classList.remove('active');
+      if (i < step) { dot.classList.add('done'); dot.innerHTML = '✓'; }
+      else if (i === step) { dot.classList.add('active'); dot.innerHTML = i; label.classList.add('active'); }
+      else { dot.innerHTML = i; }
+    }
+    for (let i = 1; i <= 2; i++) {
+      document.getElementById('line' + i).classList.toggle('done', i < step);
+    }
+  }
+
+  function goToStep2() {
+    if (!validateStep1()) return;
+    leadData.firstName = document.getElementById('firstName').value.trim();
+    leadData.lastName = document.getElementById('lastName').value.trim();
+    leadData.email = document.getElementById('email').value.trim();
+    leadData.phone = document.getElementById('phone').value.trim();
+    leadData.timeline = document.getElementById('timeline').value;
+    document.getElementById('panel1').classList.remove('active');
+    document.getElementById('panel2').classList.add('active');
+    updateProgress(2);
+    document.getElementById('estimate').scrollIntoView({ behavior: 'smooth', block: 'start' });
+  }
+
+  function goToStep1() {
+    document.getElementById('panel2').classList.remove('active');
+    document.getElementById('panel1').classList.add('active');
+    updateProgress(1);
+  }
+
+  function submitForm() {
+    if (!validateStep2()) return;
+    leadData.address = document.getElementById('address').value.trim();
+    leadData.city = document.getElementById('city').value.trim();
+    leadData.zip = document.getElementById('zip').value.trim();
+    leadData.propType = document.getElementById('propType').value;
+    leadData.sqft = document.getElementById('sqft').value.trim();
+    leadData.beds = document.getElementById('beds').value;
+    leadData.baths = document.getElementById('baths').value;
+
+    // ✅ SEND LEAD VIA EMAILJS
+    const templateParams = {
+      from_name  : leadData.firstName + ' ' + leadData.lastName,
+      from_email : leadData.email,
+      phone      : leadData.phone,
+      timeline   : leadData.timeline   || 'Not specified',
+      address    : leadData.address,
+      city       : leadData.city,
+      zip        : leadData.zip,
+      prop_type  : leadData.propType   || 'Not specified',
+      sqft       : leadData.sqft       || 'Not specified',
+      beds       : leadData.beds       || 'Not specified',
+      baths      : leadData.baths      || 'Not specified',
+    };
+    // Debug: log what we are sending
+    console.log('Sending to EmailJS:', templateParams);
+    // 1️⃣ Send notification to YOU (agent)
+    emailjs.send(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID, templateParams)
+      .then(function(response) {
+        console.log('✅ Agent notification sent! Status:', response.status);
+      })
+      .catch(function(error) {
+        console.error('❌ Agent email failed:', JSON.stringify(error));
+        alert('Email send failed: ' + JSON.stringify(error) + '\n\nCheck:\n1. Your 3 Keys are correct\n2. Gmail is connected in EmailJS\n3. Template variables match');
+      });
+
+    // 2️⃣ Send confirmation to CLIENT
+    const clientParams = {
+      client_name  : leadData.firstName + ' ' + leadData.lastName,
+      client_email : leadData.email,
+      address      : leadData.address,
+      city         : leadData.city,
+      zip          : leadData.zip,
+      agent_phone  : '(909) 000-0000',
+      agent_email  : 'janice@realestate.com',
+      agent_name   : 'Janice Chen',
+    };
+    emailjs.send(EMAILJS_SERVICE_ID, EMAILJS_CLIENT_TEMPLATE, clientParams)
+      .then(function(response) {
+        console.log('✅ Client confirmation sent! Status:', response.status);
+      })
+      .catch(function(error) {
+        console.error('❌ Client email failed:', JSON.stringify(error));
+      });
+
+    const fullAddress = `${leadData.address}, ${leadData.city}, ${leadData.zip}`;
+    const encoded = encodeURIComponent(fullAddress);
+    document.getElementById('result-addr').textContent = fullAddress;
+    document.getElementById('result-detail').textContent =
+      [leadData.propType, leadData.sqft ? leadData.sqft + ' sq ft' : '', leadData.beds ? leadData.beds + ' bed' : '', leadData.baths ? leadData.baths + ' bath' : '']
+        .filter(Boolean).join(' · ') || 'Property submitted successfully';
+
+    
+
+
+    document.getElementById('panel2').classList.remove('active');
+    document.getElementById('resultPanel').classList.add('show');
+    updateProgress(3);
+    document.getElementById('estimate').scrollIntoView({ behavior: 'smooth', block: 'start' });
+  }
+
+  function submitUnlock() {
+    const name  = document.getElementById('unlock-name').value.trim();
+    const phone = document.getElementById('unlock-phone').value.trim();
+    const email = document.getElementById('unlock-email').value.trim();
+    const errDiv = document.getElementById('unlock-error');
+    if (!name || !phone || !email) {
+      errDiv.style.display = 'block';
+      errDiv.textContent = 'Please fill in all fields.';
+      return;
+    }
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+      errDiv.style.display = 'block';
+      errDiv.textContent = 'Please enter a valid email address.';
+      return;
+    }
+    errDiv.style.display = 'none';
+    // Send lead via EmailJS
+    emailjs.send(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID, {
+      from_name: name, from_email: email, phone: phone,
+      timeline: 'Prop 19 Unlock Request', address: 'N/A', city: 'N/A', zip: 'N/A',
+      prop_type: 'Prop 19 Interest (55+)', sqft: 'N/A', beds: 'N/A', baths: 'N/A'
+    }).then(() => console.log('Prop19 lead sent')).catch(e => console.warn(e));
+    // Unlock and download
+    document.getElementById('prop19-modal').style.display = 'none';
+    const link = document.createElement('a');
+    link.href = 'Proposition_19_needs_unlock_for_viewer_to_contact_me.pdf';
+    link.download = 'Proposition_19_Analysis_Janice_Chen.pdf';
+    link.click();
+    // Update button
+    const btn = document.querySelector('#prop19-card button');
+    if (btn) { btn.textContent = '✅ Downloaded!'; btn.style.background = '#2ECC71'; btn.disabled = true; }
+  }
+</script>
+</body>
+</html>

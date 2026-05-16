@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>25122 Cliffrose St, Corona CA | $899,000 | Janice Chen</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;600;700&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --navy: #0A1628;
+    --navy-2: #112240;
+    --blue: #1D5FA6;
+    --blue-light: #2E80D8;
+    --sky: #64B5F6;
+    --gold: #C9A84C;
+    --gold-light: #E8CC7A;
+    --white: #FFFFFF;
+    --off-white: #F4F8FF;
+    --text: #1A2942;
+    --text-muted: #5A7090;
+    --border: rgba(29,95,166,0.15);
+    --shadow: 0 8px 40px rgba(10,22,40,0.12);
+    --shadow-blue: 0 8px 32px rgba(29,95,166,0.2);
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body { font-family: 'Outfit', sans-serif; background: var(--off-white); color: var(--text); overflow-x: hidden; }
+
+  /* NAV */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    background: rgba(10,22,40,0.97); backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(100,181,246,0.12);
+    padding: 0 5%; display: flex; align-items: center; justify-content: space-between; height: 64px;
+  }
+  .nav-logo { font-family: 'Cormorant Garamond', serif; font-size: 1.2rem; font-weight: 600; color: var(--white); }
+  .nav-logo span { color: var(--sky); }
+  .nav-badge { background: var(--gold); color: var(--navy); padding: 0.3rem 0.9rem; border-radius: 100px; font-size: 0.75rem; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; }
+  .nav-right { display: flex; align-items: center; gap: 1.2rem; }
+  .nav-phone { color: rgba(255,255,255,0.7); font-size: 0.85rem; text-decoration: none; }
+  .nav-phone:hover { color: var(--sky); }
+
+  /* HERO */
+  .hero {
+    min-height: 100vh;
+    background: linear-gradient(to bottom, rgba(10,22,40,0.7) 0%, rgba(10,22,40,0.3) 50%, rgba(10,22,40,0.8) 100%),
+                url('listing-hero.jpg') center/cover no-repeat;
+    background-color: var(--navy-2);
+    display: flex; flex-direction: column; justify-content: flex-end;
+    padding: 0 5% 4rem; position: relative;
+  }
+  .hero-open-house {
+    display: inline-flex; align-items: center; gap: 0.5rem;
+    background: var(--gold);
+    color: var(--navy);
+    padding: 0.5rem 1.2rem; border-radius: 8px;
+    font-size: 0.82rem; font-weight: 700;
+    text-transform: uppercase; letter-spacing: 0.06em;
+    margin-bottom: 1.2rem;
+    animation: fadeUp 0.5s ease both;
+    box-shadow: 0 4px 20px rgba(201,168,76,0.4);
+    width: fit-content;
+  }
+  .hero-open-house span { font-weight: 400; }
+  .hero-content { max-width: 1100px; margin: 0 auto; width: 100%; }
+  .hero-price {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(2.4rem, 6vw, 5.5rem);
+    font-weight: 700; color: var(--white);
+    line-height: 1.1; margin-bottom: 0.5rem;
+    animation: fadeUp 0.5s 0.1s ease both;
+  }
+  .hero-price span { color: var(--gold); }
+  .hero-address {
+    font-size: clamp(1rem, 2.5vw, 1.4rem);
+    color: rgba(255,255,255,0.85);
+    font-weight: 300; margin-bottom: 1.5rem;
+    animation: fadeUp 0.5s 0.2s ease both;
+  }
+  .hero-stats {
+    display: flex; gap: 1rem; flex-wrap: wrap;
+    animation: fadeUp 0.5s 0.3s ease both;
+  }
+  .hero-stat {
+    background: rgba(255,255,255,0.1);
+    backdrop-filter: blur(8px);
+    border: 1px solid rgba(255,255,255,0.2);
+    border-radius: 10px; padding: 0.7rem 1.2rem;
+    display: flex; align-items: center; gap: 0.6rem;
+  }
+  .hero-stat-num { font-family: 'Cormorant Garamond', serif; font-size: 1.5rem; font-weight: 700; color: var(--white); }
+  .hero-stat-label { font-size: 0.75rem; color: rgba(255,255,255,0.6); text-transform: uppercase; letter-spacing: 0.06em; }
+  .hero-btns {
+    display: flex; gap: 1rem; margin-top: 2rem; flex-wrap: wrap;
+    animation: fadeUp 0.5s 0.4s ease both;
+  }
+  .btn-gold { background: var(--gold); color: var(--navy); padding: 0.9rem 2rem; border-radius: 8px; font-size: 0.95rem; font-weight: 700; text-decoration: none; border: none; cursor: pointer; transition: all 0.2s; font-family: 'Outfit', sans-serif; box-shadow: 0 4px 20px rgba(201,168,76,0.35); }
+  .btn-gold:hover { background: var(--gold-light); transform: translateY(-2px); }
+  .btn-outline-white { background: transparent; color: var(--white); padding: 0.9rem 2rem; border-radius: 8px; font-size: 0.95rem; font-weight: 400; text-decoration: none; border: 1px solid rgba(255,255,255,0.3); cursor: pointer; transition: all 0.2s; font-family: 'Outfit', sans-serif; }
+  .btn-outline-white:hover { border-color: var(--sky); color: var(--sky); }
+
+  /* DETAILS */
+  .details { background: var(--white); padding: 80px 5%; }
+  .details-grid { display: grid; grid-template-columns: 1.4fr 1fr; gap: 5rem; max-width: 1100px; margin: 0 auto; align-items: start; }
+  .section-tag { font-size: 0.75rem; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: var(--blue); margin-bottom: 0.8rem; display: block; }
+  .section-title { font-family: 'Cormorant Garamond', serif; font-size: clamp(1.8rem, 3vw, 2.5rem); font-weight: 700; color: var(--text); margin-bottom: 1.2rem; line-height: 1.2; }
+  .about-text { font-size: 0.97rem; color: var(--text-muted); line-height: 1.85; }
+
+  /* Specs grid */
+  .specs-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-top: 2rem; }
+  .spec-card { background: var(--off-white); border: 1px solid var(--border); border-radius: 14px; padding: 1.2rem 1.4rem; transition: all 0.2s; }
+  .spec-card:hover { border-color: rgba(29,95,166,0.3); transform: translateY(-2px); box-shadow: var(--shadow); }
+  .spec-num { font-family: 'Cormorant Garamond', serif; font-size: 2rem; font-weight: 700; color: var(--blue); line-height: 1; }
+  .spec-label { font-size: 0.78rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.08em; margin-top: 0.2rem; }
+
+  /* Features */
+  .features { background: var(--navy); padding: 80px 5%; }
+  .features-inner { max-width: 1100px; margin: 0 auto; }
+  .features .section-title { color: var(--white); }
+  .features .section-tag { color: var(--sky); }
+  .features-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.2rem; margin-top: 2.5rem; }
+  .feature-item { background: rgba(255,255,255,0.05); border: 1px solid rgba(100,181,246,0.15); border-radius: 12px; padding: 1.3rem 1.5rem; display: flex; align-items: center; gap: 0.9rem; transition: all 0.2s; }
+  .feature-item:hover { background: rgba(255,255,255,0.08); border-color: rgba(100,181,246,0.3); }
+  .feature-icon { width: 36px; height: 36px; border-radius: 10px; background: rgba(29,95,166,0.3); border: 1px solid rgba(100,181,246,0.2); display: flex; align-items: center; justify-content: center; font-size: 1rem; flex-shrink: 0; }
+  .feature-text { font-size: 0.88rem; color: rgba(255,255,255,0.8); font-weight: 400; }
+
+  /* PDF SECTION */
+  .pdf-section { background: var(--off-white); padding: 80px 5%; }
+  .pdf-inner { max-width: 900px; margin: 0 auto; text-align: center; }
+  .pdf-inner .section-title { color: var(--text); }
+  .pdf-embed-wrap {
+    margin-top: 2.5rem;
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: 20px; overflow: hidden;
+    box-shadow: var(--shadow);
+    position: relative;
+  }
+  .pdf-embed-wrap::before {
+    content: '';
+    position: absolute; top: 0; left: 0; right: 0; height: 4px;
+    background: linear-gradient(90deg, var(--blue), var(--sky));
+  }
+  .pdf-embed-wrap embed,
+  .pdf-embed-wrap iframe {
+    width: 100%; height: 850px; border: none; display: block;
+  }
+  .pdf-fallback {
+    display: none;
+    padding: 3rem 2rem; text-align: center;
+  }
+  .pdf-fallback-icon { font-size: 3rem; margin-bottom: 1rem; }
+  .pdf-fallback-text { font-size: 1rem; color: var(--text-muted); margin-bottom: 1.5rem; }
+  .btn-download { display: inline-flex; align-items: center; gap: 0.6rem; background: var(--blue); color: white; padding: 0.9rem 1.8rem; border-radius: 10px; font-size: 0.95rem; font-weight: 600; text-decoration: none; transition: all 0.2s; font-family: 'Outfit', sans-serif; }
+  .btn-download:hover { background: var(--blue-light); transform: translateY(-2px); }
+
+  /* AGENT */
+  .agent-section { background: var(--white); padding: 80px 5%; }
+  .agent-inner { max-width: 700px; margin: 0 auto; }
+  .agent-card-full { background: var(--navy); border-radius: 20px; padding: 2.5rem; position: relative; overflow: hidden; }
+  .agent-card-full::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px; background: linear-gradient(90deg, var(--gold), var(--gold-light)); }
+  .agent-card-full::after { content: ''; position: absolute; top: -100px; right: -100px; width: 300px; height: 300px; background: radial-gradient(circle, rgba(29,95,166,0.2) 0%, transparent 70%); border-radius: 50%; }
+  .agent-flex { display: flex; gap: 2rem; align-items: center; position: relative; z-index: 1; }
+  .agent-photo { width: 100px; height: 100px; border-radius: 50%; background: linear-gradient(135deg, var(--blue), var(--sky)); display: flex; align-items: center; justify-content: center; font-family: 'Cormorant Garamond', serif; font-size: 2rem; font-weight: 700; color: white; border: 3px solid rgba(201,168,76,0.4); flex-shrink: 0; overflow: hidden; }
+  .agent-photo img { width: 100%; height: 100%; object-fit: cover; }
+  .agent-info-name { font-family: 'Cormorant Garamond', serif; font-size: 1.6rem; font-weight: 700; color: var(--white); margin-bottom: 0.2rem; }
+  .agent-info-title { font-size: 0.8rem; color: var(--gold); text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 1rem; }
+  .agent-info-details { display: flex; flex-direction: column; gap: 0.5rem; }
+  .agent-info-item { display: flex; align-items: center; gap: 0.6rem; font-size: 0.88rem; color: rgba(255,255,255,0.7); }
+  .agent-cta { display: flex; gap: 1rem; margin-top: 2rem; position: relative; z-index: 1; }
+  .btn-call { flex: 1; background: var(--gold); color: var(--navy); padding: 0.85rem; border-radius: 10px; font-size: 0.95rem; font-weight: 700; text-decoration: none; text-align: center; transition: all 0.2s; font-family: 'Outfit', sans-serif; }
+  .btn-call:hover { background: var(--gold-light); transform: translateY(-2px); }
+  .btn-email { flex: 1; background: transparent; color: var(--white); padding: 0.85rem; border-radius: 10px; font-size: 0.95rem; font-weight: 400; text-decoration: none; text-align: center; border: 1px solid rgba(255,255,255,0.2); transition: all 0.2s; font-family: 'Outfit', sans-serif; }
+  .btn-email:hover { border-color: var(--sky); color: var(--sky); }
+
+  /* FOOTER */
+  footer { background: var(--navy); color: rgba(255,255,255,0.4); padding: 2.5rem 5%; text-align: center; border-top: 1px solid rgba(100,181,246,0.1); font-size: 0.78rem; line-height: 1.8; }
+  footer a { color: var(--sky); text-decoration: none; }
+
+  /* ANIMATIONS */
+  @keyframes fadeUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+
+  /* RESPONSIVE */
+  @media (max-width: 800px) {
+    .details-grid { grid-template-columns: 1fr; gap: 2.5rem; }
+    .features-grid { grid-template-columns: 1fr 1fr; }
+    .agent-flex { flex-direction: column; text-align: center; }
+    .agent-cta { flex-direction: column; }
+    .hero-stats { gap: 0.7rem; }
+    .nav-phone { display: none; }
+    .hero { padding: 0 5% 3rem; min-height: 100svh; }
+    .hero-open-house { font-size: 0.75rem; padding: 0.45rem 1rem; }
+    .hero-btns { flex-direction: column; }
+    .btn-gold, .btn-outline-white { text-align: center; }
+  }
+  @media (max-width: 500px) {
+    .features-grid { grid-template-columns: 1fr; }
+    .specs-grid { grid-template-columns: 1fr 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-logo">Janice <span>Chen</span></div>
+  <div class="nav-right">
+    <a href="tel:9513677321" class="nav-phone">📞 (951) 367-7321</a>
+    <div class="nav-badge">Active Listing</div>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-content">
+    <div class="hero-open-house">
+      🏠 Open House <span>· SAT 5/2 &amp; SUN 5/3 · 1PM – 4PM</span>
+    </div>
+    <div class="hero-price">Offered at <span>$899,000</span></div>
+    <div class="hero-address">25122 Cliffrose Street, Corona, CA 92883</div>
+    <div class="hero-stats">
+      <div class="hero-stat">
+        <div>
+          <div class="hero-stat-num">5</div>
+          <div class="hero-stat-label">Bedrooms</div>
+        </div>
+      </div>
+      <div class="hero-stat">
+        <div>
+          <div class="hero-stat-num">3.5</div>
+          <div class="hero-stat-label">Bathrooms</div>
+        </div>
+      </div>
+      <div class="hero-stat">
+        <div>
+          <div class="hero-stat-num">4,187</div>
+          <div class="hero-stat-label">Sq Ft</div>
+        </div>
+      </div>
+      <div class="hero-stat">
+        <div>
+          <div class="hero-stat-num">6,098</div>
+          <div class="hero-stat-label">Lot Sq Ft</div>
+        </div>
+      </div>
+    </div>
+    <div class="hero-btns">
+      <a href="tel:9513677321" class="btn-gold">📞 Schedule a Showing</a>
+      <a href="#pdf" class="btn-outline-white">View Property Flyer</a>
+    </div>
+  </div>
+</section>
+
+<!-- DETAILS -->
+<section class="details">
+  <div class="details-grid">
+    <div>
+      <span class="section-tag">About This Property</span>
+      <h2 class="section-title">A Must-See Home<br>in Corona</h2>
+      <p class="about-text">Welcome to this beautifully maintained home in a highly desirable Corona neighborhood. Featuring spacious living areas, abundant natural light, and a functional floor plan, it's perfect for modern living.</p>
+      <br>
+      <p class="about-text">Enjoy formal living and dining spaces, a cozy family room, and a well-equipped kitchen with ample cabinetry and brand-new stove, range, and dishwasher. Upstairs offers generously sized bedrooms, including a relaxing primary suite.</p>
+      <br>
+      <p class="about-text">The private backyard is ideal for entertaining or unwinding. Conveniently located near parks, schools, shopping, and freeways — this is a must-see home in Corona!</p>
+    </div>
+    <div>
+      <span class="section-tag">Property Details</span>
+      <div class="specs-grid">
+        <div class="spec-card">
+          <div class="spec-num">5</div>
+          <div class="spec-label">Bedrooms</div>
+        </div>
+        <div class="spec-card">
+          <div class="spec-num">3.5</div>
+          <div class="spec-label">Bathrooms</div>
+        </div>
+        <div class="spec-card">
+          <div class="spec-num">4,187</div>
+          <div class="spec-label">Sq Ft Living</div>
+        </div>
+        <div class="spec-card">
+          <div class="spec-num">6,098</div>
+          <div class="spec-label">Sq Ft Lot</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FEATURES -->
+<section class="features">
+  <div class="features-inner">
+    <span class="section-tag">Home Highlights</span>
+    <h2 class="section-title" style="color:white;">What Makes This Home Special</h2>
+    <div class="features-grid">
+      <div class="feature-item"><div class="feature-icon">🍳</div><div class="feature-text">Brand-new stove, range & dishwasher</div></div>
+      <div class="feature-item"><div class="feature-icon">🛋️</div><div class="feature-text">Formal living & dining spaces</div></div>
+      <div class="feature-item"><div class="feature-icon">🌿</div><div class="feature-text">Private backyard for entertaining</div></div>
+      <div class="feature-item"><div class="feature-icon">🛏️</div><div class="feature-text">Generous primary suite upstairs</div></div>
+      <div class="feature-item"><div class="feature-icon">☀️</div><div class="feature-text">Abundant natural light throughout</div></div>
+      <div class="feature-item"><div class="feature-icon">🏫</div><div class="feature-text">Near parks, schools & shopping</div></div>
+      <div class="feature-item"><div class="feature-icon">🚗</div><div class="feature-text">Easy freeway access</div></div>
+      <div class="feature-item"><div class="feature-icon">🏠</div><div class="feature-text">Spacious functional floor plan</div></div>
+      <div class="feature-item"><div class="feature-icon">💡</div><div class="feature-text">Cozy family room</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- PDF SECTION -->
+<section class="pdf-section" id="pdf">
+  <div class="pdf-inner">
+    <span class="section-tag">Property Flyer</span>
+    <h2 class="section-title">Full Property Details</h2>
+    <div style="margin-top:2.5rem;border-radius:20px;overflow:hidden;box-shadow:0 8px 40px rgba(10,22,40,0.12);border:1px solid rgba(29,95,166,0.15);position:relative;">
+      <div style="position:absolute;top:0;left:0;right:0;height:4px;background:linear-gradient(90deg,#1D5FA6,#64B5F6);z-index:1;"></div>
+      <img src="listing-flyer.jpg" alt="25122 Cliffrose Street Property Flyer"
+        style="width:100%;display:block;"
+        onerror="this.style.display='none';document.getElementById('flyer-fallback').style.display='block';">
+      <div id="flyer-fallback" style="display:none;padding:3rem;text-align:center;">
+        <div style="font-size:3rem;margin-bottom:1rem;">📄</div>
+        <div style="color:#5A7090;margin-bottom:1.5rem;">Click below to view the property flyer</div>
+        <a href="25122-Cliffrose-Street-Corona-CA-92883-pdf_flyer.pdf" class="btn-download" target="_blank">⬇️ View Property Flyer</a>
+      </div>
+    </div>
+    <div style="margin-top:1.5rem;text-align:center;">
+      <a href="25122-Cliffrose-Street-Corona-CA-92883-pdf_flyer.pdf" class="btn-download" target="_blank" download>⬇️ Download Property Flyer PDF</a>
+    </div>
+  </div>
+</section>
+
+<!-- AGENT -->
+<section class="agent-section" id="contact">
+  <div class="agent-inner">
+    <div style="text-align:center;margin-bottom:2rem;">
+      <span class="section-tag">Your Agent</span>
+      <h2 class="section-title">Ready to Make an Offer?</h2>
+    </div>
+    <div class="agent-card-full">
+      <div class="agent-flex">
+        <div class="agent-photo">
+          <img src="janice.jpg" alt="Janice Chen"
+            onerror="this.style.display='none';this.parentElement.innerHTML='JC';">
+        </div>
+        <div>
+          <div class="agent-info-name">Janice (Yu Wei) Chen</div>
+          <div class="agent-info-title">Realtor® · DRE# 02140656 · Pinnacle Real Estate Group</div>
+          <div class="agent-info-details">
+            <div class="agent-info-item">📞 (951) 367-7321</div>
+            <div class="agent-info-item">✉️ janicechenhomes@gmail.com</div>
+            <div class="agent-info-item">🌐 linktr.ee/janicechenhomes</div>
+            <div class="agent-info-item">🏢 2633 S Baldwin Ave, Arcadia, CA 91780</div>
+          </div>
+        </div>
+      </div>
+      <div class="agent-cta">
+        <a href="tel:9513677321" class="btn-call">📞 Call / Text Janice</a>
+        <a href="mailto:janicechenhomes@gmail.com" class="btn-email">✉️ Send Email</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div>Janice (Yu Wei) Chen · Realtor® · DRE# 02140656</div>
+  <div>Pinnacle Real Estate Group · 2633 S Baldwin Ave, Arcadia, CA 91780</div>
+  <div style="margin-top:0.8rem;">© 2025 All rights reserved. Equal Housing Opportunity. Information deemed reliable but not guaranteed.</div>
+</footer>
+
+</body>
+</html>
