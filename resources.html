@@ -6,19 +6,19 @@
 <title>Janice Chen | Free Resources</title>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;600;700&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
 <!-- Google Analytics -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-WMDJ2R0517"></script>
+<script async src="https://www.googletagmanager.com/gtag/js?id=GA_MEASUREMENT_ID"></script>
 <script>
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
   gtag('js', new Date());
-  gtag('config', 'G-WMDJ2R0517');
+  gtag('config', 'GA_MEASUREMENT_ID');
 </script>
 <!-- EmailJS -->
 <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
 <script>
-  const EMAILJS_PUBLIC_KEY       = 'X5LCY9uIVvg1EqunE';       // Account > General > Public Key
-  const EMAILJS_SERVICE_ID       = 'service_4cfqawp';       // Email Services > Service ID
-  const EMAILJS_TEMPLATE_ID      = 'template_1ndf06d';      // Email Templates > Your notification template
+  const EMAILJS_PUBLIC_KEY       = 'YOUR_PUBLIC_KEY';       // Account > General > Public Key
+  const EMAILJS_SERVICE_ID       = 'YOUR_SERVICE_ID';       // Email Services > Service ID
+  const EMAILJS_TEMPLATE_ID      = 'YOUR_TEMPLATE_ID';      // Email Templates > Your notification template
   const EMAILJS_CLIENT_TEMPLATE  = 'YOUR_CLIENT_TEMPLATE_ID'; // Email Templates > Client confirmation template
   // ============================================
   (function(){ emailjs.init(EMAILJS_PUBLIC_KEY); })();
@@ -277,18 +277,22 @@
     // Send lead via EmailJS
     // Send to YOUR email via EmailJS
     emailjs.send(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID, {
-      from_name: name,
-      from_email: email,
-      phone: phone,
-      timeline: '🔒 Prop 19 Unlock Request — 55+ Homeowner',
-      address: 'Prop 19 Interest',
-      city: 'N/A', zip: 'N/A',
-      prop_type: '55+ Property Tax Benefits',
-      sqft: 'N/A', beds: 'N/A', baths: 'N/A'
-    }).then(() => {
-      console.log('✅ Prop19 lead sent to your email!');
-      gtag('event','unlock',{'event_category':'Prop19','event_label':name});
-    }).catch(e => console.warn('EmailJS error:', e));
+      from_name: name || 'N/A',
+      from_email: email || 'N/A',
+      phone: phone || 'N/A',
+      timeline: 'Prop 19 Unlock - 55+ Homeowner',
+      address: 'Prop 19 Request',
+      city: 'N/A',
+      zip: 'N/A',
+      prop_type: '55+ Tax Benefits',
+      sqft: 'N/A',
+      beds: 'N/A',
+      baths: 'N/A'
+    }).then(function(response) {
+      console.log('✅ Prop19 lead sent!', response.status);
+    }).catch(function(error) {
+      console.error('❌ EmailJS error:', JSON.stringify(error));
+    });
     // Unlock and download
     document.getElementById('prop19-modal').style.display = 'none';
     const link = document.createElement('a');
