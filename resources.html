@@ -276,18 +276,13 @@
     errDiv.style.display = 'none';
     // Send lead via EmailJS
     // Send to YOUR email via EmailJS
-    emailjs.send(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID, {
-      from_name: name || 'N/A',
-      from_email: email || 'N/A',
-      phone: phone || 'N/A',
-      timeline: 'Prop 19 Unlock - 55+ Homeowner',
-      address: 'Prop 19 Request',
-      city: 'N/A',
-      zip: 'N/A',
-      prop_type: '55+ Tax Benefits',
-      sqft: 'N/A',
-      beds: 'N/A',
-      baths: 'N/A'
+    emailjs.send(EMAILJS_SERVICE_ID, 'template_lkj2l8s', {
+      lead_type    : 'Prop 19 Unlock - 55+ Homeowner',
+      from_name    : name || 'N/A',
+      from_email   : email || 'N/A',
+      phone        : phone || 'N/A',
+      timeline     : 'Prop 19 Tax Benefits Interest',
+      property_info: 'Interested in Prop 19 55+ Tax Benefits'
     }).then(function(response) {
       console.log('✅ Prop19 lead sent!', response.status);
     }).catch(function(error) {

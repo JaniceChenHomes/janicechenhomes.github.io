@@ -746,47 +746,22 @@
 
     // ✅ SEND LEAD VIA EMAILJS
     const templateParams = {
-      from_name  : leadData.firstName + ' ' + leadData.lastName,
-      from_email : leadData.email,
-      phone      : leadData.phone,
-      timeline   : leadData.timeline   || 'Not specified',
-      address    : leadData.address,
-      city       : leadData.city,
-      zip        : leadData.zip,
-      prop_type  : leadData.propType   || 'Not specified',
-      sqft       : leadData.sqft       || 'Not specified',
-      beds       : leadData.beds       || 'Not specified',
-      baths      : leadData.baths      || 'Not specified',
+      lead_type    : 'Home Estimate Request',
+      from_name    : leadData.firstName + ' ' + leadData.lastName,
+      from_email   : leadData.email,
+      phone        : leadData.phone,
+      timeline     : leadData.timeline || 'Not specified',
+      property_info: 'Address: ' + leadData.address + ', ' + leadData.city + ', ' + leadData.zip +
+                     '\nType: ' + (leadData.propType || 'N/A') +
+                     '\nSize: ' + (leadData.sqft || 'N/A') + ' sq ft' +
+                     '\nBeds/Baths: ' + (leadData.beds || 'N/A') + 'bd / ' + (leadData.baths || 'N/A') + 'ba'
     };
-    // Debug: log what we are sending
-    console.log('Sending to EmailJS:', templateParams);
-    // 1️⃣ Send notification to YOU (agent)
-    emailjs.send(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID, templateParams)
+    emailjs.send(EMAILJS_SERVICE_ID, 'template_lkj2l8s', templateParams)
       .then(function(response) {
-        console.log('✅ Agent notification sent! Status:', response.status);
+        console.log('✅ Email sent!', response.status);
       })
       .catch(function(error) {
-        console.error('❌ Agent email failed:', JSON.stringify(error));
-        alert('Email send failed: ' + JSON.stringify(error) + '\n\nCheck:\n1. Your 3 Keys are correct\n2. Gmail is connected in EmailJS\n3. Template variables match');
-      });
-
-    // 2️⃣ Send confirmation to CLIENT
-    const clientParams = {
-      client_name  : leadData.firstName + ' ' + leadData.lastName,
-      client_email : leadData.email,
-      address      : leadData.address,
-      city         : leadData.city,
-      zip          : leadData.zip,
-      agent_phone  : '(909) 000-0000',
-      agent_email  : 'janice@realestate.com',
-      agent_name   : 'Janice Chen',
-    };
-    emailjs.send(EMAILJS_SERVICE_ID, EMAILJS_CLIENT_TEMPLATE, clientParams)
-      .then(function(response) {
-        console.log('✅ Client confirmation sent! Status:', response.status);
-      })
-      .catch(function(error) {
-        console.error('❌ Client email failed:', JSON.stringify(error));
+        console.error('❌ EmailJS failed:', JSON.stringify(error));
       });
 
     const fullAddress = `${leadData.address}, ${leadData.city}, ${leadData.zip}`;
