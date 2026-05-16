@@ -16,10 +16,10 @@
 <!-- EmailJS -->
 <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
 <script>
-  const EMAILJS_PUBLIC_KEY       = 'X5LCY9uIVvg1EqunE';       // Account > General > Public Key
-  const EMAILJS_SERVICE_ID       = 'service_4cfqawp';       // Email Services > Service ID
-  const EMAILJS_TEMPLATE_ID      = 'template_lkj2l8s';      // Email Templates > Your notification template
-  const EMAILJS_CLIENT_TEMPLATE  = 'template_1ndf06d'; // Email Templates > Client confirmation template
+  const EMAILJS_PUBLIC_KEY       = 'YOUR_PUBLIC_KEY';       // Account > General > Public Key
+  const EMAILJS_SERVICE_ID       = 'YOUR_SERVICE_ID';       // Email Services > Service ID
+  const EMAILJS_TEMPLATE_ID      = 'YOUR_TEMPLATE_ID';      // Email Templates > Your notification template
+  const EMAILJS_CLIENT_TEMPLATE  = 'YOUR_CLIENT_TEMPLATE_ID'; // Email Templates > Client confirmation template
   // ============================================
   (function(){ emailjs.init(EMAILJS_PUBLIC_KEY); })();
 </script>
@@ -40,6 +40,10 @@
     .charts-grid { grid-template-columns: 1fr !important; }
     .downloads-grid { grid-template-columns: 1fr 1fr !important; gap: 0.8rem !important; }
     section { padding: 40px 4% !important; }
+    .hero-grid iframe { min-height: 200px !important; }
+  }
+  @media(max-width:480px){
+    .downloads-grid { grid-template-columns: 1fr 1fr !important; }
   }
   @media(max-width:768px){
     /* Hero grid: stack vertically */
@@ -91,23 +95,23 @@
 </nav>
 
 <!-- QR LANDING PAGE -->
-<section id="resources" style="background:#F4F8FF;padding:80px 5%;">
+<section id="resources" style="background:#F5F2EC;padding:80px 5%;">
   <div style="max-width:1100px;margin:0 auto;">
     <div style="text-align:center;margin-bottom:3rem;">
-      <div style="font-size:0.75rem;font-weight:600;letter-spacing:0.12em;text-transform:uppercase;color:#1D5FA6;margin-bottom:0.8rem;">Free Resources</div>
+      <div style="font-size:0.75rem;font-weight:600;letter-spacing:0.12em;text-transform:uppercase;color:#C9A96E;margin-bottom:0.8rem;">Free Resources</div>
       <h2 style="font-family:'Cormorant Garamond',serif;font-size:clamp(2rem,3.5vw,2.8rem);font-weight:700;color:#1A2942;margin-bottom:1rem;">Welcome! 👋 Janice Chen Here</h2>
       <p style="font-size:1rem;color:#5A7090;max-width:520px;margin:0 auto;line-height:1.7;">Watch my quick intro video and download any of the free resources below — no sign-up needed!</p>
     </div>
-    <div class="hero-grid" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:2rem;margin-bottom:3rem;align-items:start;">
-      <div style="background:#0A1628;border-radius:20px;padding:1.8rem;position:relative;overflow:hidden;min-width:0;">
-        <div style="position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,#1D5FA6,#64B5F6);"></div>
+    <div class="hero-grid" style="display:grid;grid-template-columns:1fr 1fr;gap:2rem;margin-bottom:3rem;align-items:stretch;">
+      <div style="background:#0A0A0A;border-radius:20px;padding:1.8rem;position:relative;overflow:hidden;min-width:0;">
+        <div style="position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,#C9A96E,#F0E4C4);"></div>
         <div style="display:flex;align-items:center;gap:1.2rem;margin-bottom:1.5rem;">
-          <div style="width:70px;height:70px;border-radius:50%;background:linear-gradient(135deg,#1D5FA6,#64B5F6);display:flex;align-items:center;justify-content:center;font-family:'Cormorant Garamond',serif;font-size:1.6rem;font-weight:700;color:white;flex-shrink:0;overflow:hidden;">
+          <div style="width:70px;height:70px;border-radius:50%;background:linear-gradient(135deg,#C9A96E,#E8D5B0);display:flex;align-items:center;justify-content:center;font-family:'Cormorant Garamond',serif;font-size:1.6rem;font-weight:700;color:white;flex-shrink:0;overflow:hidden;">
             <img src="janice.jpg" alt="Janice Chen" style="width:100%;height:100%;object-fit:cover;" onerror="this.style.display='none';this.parentElement.innerHTML='JC';">
           </div>
           <div>
             <div style="font-family:'Cormorant Garamond',serif;font-size:1.2rem;font-weight:700;color:white;word-break:break-word;">Janice (Yu Wei) Chen</div>
-            <div style="font-size:0.78rem;color:#64B5F6;text-transform:uppercase;letter-spacing:0.1em;">MBA · Realtor® · DRE# 02140656</div>
+            <div style="font-size:0.78rem;color:#C9A96E;text-transform:uppercase;letter-spacing:0.1em;">MBA · Realtor® · DRE# 02140656</div>
           </div>
         </div>
         <div style="display:flex;flex-direction:column;gap:0.6rem;margin-bottom:1.5rem;">
@@ -117,31 +121,28 @@
           <div style="font-size:0.88rem;color:rgba(255,255,255,0.7);">📍 IE &amp; SoCal Specialist</div>
         </div>
         <div style="display:flex;gap:0.8rem;flex-wrap:wrap;">
-          <a href="tel:9513677321" style="flex:1;background:#1D5FA6;color:white;padding:0.75rem;border-radius:8px;text-align:center;text-decoration:none;font-size:0.88rem;font-weight:600;">📞 Call</a>
+          <a href="tel:9513677321" style="flex:1;background:#C9A96E;color:#0A0A0A;padding:0.75rem;border-radius:8px;text-align:center;text-decoration:none;font-size:0.88rem;font-weight:600;">📞 Call</a>
           <a href="mailto:janicechenhomes@gmail.com" style="flex:1;background:transparent;color:white;padding:0.75rem;border-radius:8px;text-align:center;text-decoration:none;font-size:0.88rem;border:1px solid rgba(255,255,255,0.2);">✉️ Email</a>
-          <a href="index.html#estimate" style="flex:1;background:#C9A84C;color:#0A1628;padding:0.75rem;border-radius:8px;text-align:center;text-decoration:none;font-size:0.88rem;font-weight:700;">🏠 Estimate</a>
+          <a href="index.html#estimate" style="flex:1;background:#C9A96E;color:#0A0A0A;padding:0.75rem;border-radius:8px;text-align:center;text-decoration:none;font-size:0.88rem;font-weight:700;">🏠 Estimate</a>
         </div>
       </div>
-      <!-- VIDEO PLACEHOLDER - Replace inner div with YouTube iframe when ready -->
-      <div style="border-radius:20px;overflow:hidden;background:#0A0A0A;">
-  <iframe 
-    width="100%" height="315"
-    src="https://www.youtube.com/embed/rbrR9rx3UBw?si=4e0rGElnhZ-4R78M"
-    title="YouTube video player"
-    frameborder="0"
-    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-    referrerpolicy="strict-origin-when-cross-origin"
-    allowfullscreen>
-  </iframe>
-</div>
-        -->
-        <div style="font-size:3rem;margin-bottom:1rem;">🎥</div>
-        <div style="font-size:1rem;font-weight:600;color:white;margin-bottom:0.4rem;">Intro Video</div>
-        <div style="font-size:0.82rem;color:rgba(255,255,255,0.4);text-align:center;padding:0 2rem;">Search VIDEO_ID_HERE in VS Code<br>and replace with your YouTube ID</div>
+      <!-- INTRO VIDEO -->
+      <div style="border-radius:20px;overflow:hidden;background:#0A0A0A;display:flex;align-items:stretch;">
+        <iframe 
+          width="100%"
+          height="100%"
+          src="https://www.youtube.com/embed/rbrR9rx3UBw?si=4e0rGElnhZ-4R78M"
+          title="YouTube video player"
+          frameborder="0"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+          referrerpolicy="strict-origin-when-cross-origin"
+          allowfullscreen
+          style="min-height:320px;width:100%;display:block;">
+        </iframe>
       </div>
     </div>
     <div style="margin-bottom:2rem;">
-      <div style="font-size:0.75rem;font-weight:600;letter-spacing:0.12em;text-transform:uppercase;color:#1D5FA6;margin-bottom:1rem;">📊 Eastvale Market Data — April 2026</div>
+      <div style="font-size:0.75rem;font-weight:600;letter-spacing:0.12em;text-transform:uppercase;color:#C9A96E;margin-bottom:1rem;">📊 Eastvale Market Data — April 2026</div>
       <div class="charts-grid" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:1.2rem;margin-bottom:2rem;">
         <div style="background:white;border-radius:14px;overflow:hidden;border:1px solid rgba(29,95,166,0.12);box-shadow:0 4px 20px rgba(10,22,40,0.06);">
           <img src="Sold_Listings.jpg" alt="April 2026 Sold Listings" style="width:100%;display:block;">
@@ -159,17 +160,17 @@
         </div>
       </div>
     </div>
-    <div style="font-size:0.75rem;font-weight:600;letter-spacing:0.12em;text-transform:uppercase;color:#1D5FA6;margin-bottom:1rem;">📥 Free Downloads</div>
+    <div style="font-size:0.75rem;font-weight:600;letter-spacing:0.12em;text-transform:uppercase;color:#C9A96E;margin-bottom:1rem;">📥 Free Downloads</div>
     <div class="downloads-grid" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:1rem;">
       <div style="background:white;border-radius:16px;overflow:hidden;border:1px solid rgba(29,95,166,0.12);box-shadow:0 4px 20px rgba(10,22,40,0.06);display:flex;flex-direction:column;">
         <div style="height:160px;overflow:hidden;">
           <img src="thumb-market.jpg" alt="Market Report" style="width:100%;height:100%;object-fit:cover;object-position:top;">
         </div>
         <div style="padding:1.2rem;flex:1;display:flex;flex-direction:column;">
-          <div style="font-size:0.7rem;text-transform:uppercase;letter-spacing:0.08em;color:#1D5FA6;margin-bottom:0.4rem;">Market Report</div>
+          <div style="font-size:0.7rem;text-transform:uppercase;letter-spacing:0.08em;color:#C9A96E;margin-bottom:0.4rem;">Market Report</div>
           <div style="font-size:0.92rem;font-weight:600;color:#1A2942;margin-bottom:0.4rem;line-height:1.3;">Eastvale May 2026 Market Update</div>
           <div style="font-size:0.78rem;color:#5A7090;margin-bottom:1rem;flex:1;">Latest real-time market data for Eastvale, CA</div>
-          <a href="market-report.pdf" download style="display:block;background:#1D5FA6;color:white;padding:0.65rem;border-radius:8px;text-align:center;text-decoration:none;font-size:0.82rem;font-weight:600;" onclick="gtag('event','download',{'event_category':'PDF','event_label':'Market Report'})">⬇ Download</a>
+          <a href="market-report.pdf" download style="display:block;background:#C9A96E;color:#0A0A0A;padding:0.65rem;border-radius:8px;text-align:center;text-decoration:none;font-size:0.82rem;font-weight:600;" onclick="gtag('event','download',{'event_category':'PDF','event_label':'Market Report'})">⬇ Download</a>
         </div>
       </div>
       <div style="background:white;border-radius:16px;overflow:hidden;border:1px solid rgba(29,95,166,0.12);box-shadow:0 4px 20px rgba(10,22,40,0.06);display:flex;flex-direction:column;">
@@ -177,10 +178,10 @@
           <img src="thumb-housing.jpg" alt="US Housing Prices" style="width:100%;height:100%;object-fit:cover;object-position:top;">
         </div>
         <div style="padding:1.2rem;flex:1;display:flex;flex-direction:column;">
-          <div style="font-size:0.7rem;text-transform:uppercase;letter-spacing:0.08em;color:#1D5FA6;margin-bottom:0.4rem;">Investment Guide</div>
+          <div style="font-size:0.7rem;text-transform:uppercase;letter-spacing:0.08em;color:#C9A96E;margin-bottom:0.4rem;">Investment Guide</div>
           <div style="font-size:0.92rem;font-weight:600;color:#1A2942;margin-bottom:0.4rem;line-height:1.3;">U.S. Housing Prices 1951–2025</div>
           <div style="font-size:0.78rem;color:#5A7090;margin-bottom:1rem;flex:1;">75 years of data — prices only declined 7 times</div>
-          <a href="housing-prices.pdf" download style="display:block;background:#1D5FA6;color:white;padding:0.65rem;border-radius:8px;text-align:center;text-decoration:none;font-size:0.82rem;font-weight:600;">⬇ Download</a>
+          <a href="housing-prices.pdf" download style="display:block;background:#C9A96E;color:#0A0A0A;padding:0.65rem;border-radius:8px;text-align:center;text-decoration:none;font-size:0.82rem;font-weight:600;">⬇ Download</a>
         </div>
       </div>
       <div style="background:white;border-radius:16px;overflow:hidden;border:1px solid rgba(29,95,166,0.12);box-shadow:0 4px 20px rgba(10,22,40,0.06);display:flex;flex-direction:column;">
@@ -192,10 +193,10 @@
           <div style="position:absolute;bottom:6px;right:8px;background:rgba(10,22,40,0.7);color:white;font-size:0.65rem;padding:2px 7px;border-radius:10px;">2 pages</div>
         </div>
         <div style="padding:1.2rem;flex:1;display:flex;flex-direction:column;">
-          <div style="font-size:0.7rem;text-transform:uppercase;letter-spacing:0.08em;color:#1D5FA6;margin-bottom:0.4rem;">Seller Guide</div>
+          <div style="font-size:0.7rem;text-transform:uppercase;letter-spacing:0.08em;color:#C9A96E;margin-bottom:0.4rem;">Seller Guide</div>
           <div style="font-size:0.92rem;font-weight:600;color:#1A2942;margin-bottom:0.4rem;line-height:1.3;">Pre-Sale Inspection Reports</div>
           <div style="font-size:0.78rem;color:#5A7090;margin-bottom:1rem;flex:1;">CA cities requiring building reports — costs &amp; contacts (2 pages)</div>
-          <a href="presale-inspection.pdf" download style="display:block;background:#1D5FA6;color:white;padding:0.65rem;border-radius:8px;text-align:center;text-decoration:none;font-size:0.82rem;font-weight:600;">⬇ Download (2 pages)</a>
+          <a href="presale-inspection.pdf" download style="display:block;background:#C9A96E;color:#0A0A0A;padding:0.65rem;border-radius:8px;text-align:center;text-decoration:none;font-size:0.82rem;font-weight:600;">⬇ Download (2 pages)</a>
         </div>
       </div>
       <div style="background:white;border-radius:16px;overflow:hidden;border:1px solid rgba(29,95,166,0.12);box-shadow:0 4px 20px rgba(10,22,40,0.06);display:flex;flex-direction:column;">
