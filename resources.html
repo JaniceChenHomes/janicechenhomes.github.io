@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Janice Chen | Free Resources</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;600;700&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
+<!-- Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=GA_MEASUREMENT_ID"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'GA_MEASUREMENT_ID');
+</script>
+<!-- EmailJS -->
+<script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+<script>
+  const EMAILJS_PUBLIC_KEY       = 'X5LCY9uIVvg1EqunE';       // Account > General > Public Key
+  const EMAILJS_SERVICE_ID       = 'service_4cfqawp';       // Email Services > Service ID
+  const EMAILJS_TEMPLATE_ID      = 'template_lkj2l8s';      // Email Templates > Your notification template
+  const EMAILJS_CLIENT_TEMPLATE  = 'template_1ndf06d'; // Email Templates > Client confirmation template
+  // ============================================
+  (function(){ emailjs.init(EMAILJS_PUBLIC_KEY); })();
+</script>
+<style>
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body { font-family:'Outfit',sans-serif; background:#F4F8FF; }
+  nav {
+    background:rgba(10,22,40,0.97); backdrop-filter:blur(12px);
+    border-bottom:1px solid rgba(100,181,246,0.12);
+    padding:0 5%; display:flex; align-items:center; justify-content:space-between; height:64px;
+  }
+  .nav-logo { font-family:'Cormorant Garamond',serif; font-size:1.2rem; font-weight:600; color:white; }
+  .nav-logo span { color:#64B5F6; }
+  .nav-link { color:rgba(255,255,255,0.7); text-decoration:none; font-size:0.85rem; }
+  .nav-link:hover { color:#64B5F6; }
+  @media(max-width:768px){
+    .hero-grid { grid-template-columns: 1fr !important; }
+    .charts-grid { grid-template-columns: 1fr !important; }
+    .downloads-grid { grid-template-columns: 1fr 1fr !important; gap: 0.8rem !important; }
+    section { padding: 40px 4% !important; }
+  }
+  @media(max-width:768px){
+    /* Hero grid: stack vertically */
+    div[style*="grid-template-columns:1fr 1fr"] {
+      grid-template-columns: 1fr !important;
+    }
+    /* Downloads: 2 columns on mobile */
+    div[style*="grid-template-columns:repeat(4,1fr)"] {
+      grid-template-columns: 1fr 1fr !important;
+    }
+    /* Charts: stack vertically */
+    div[style*="grid-template-columns:1fr 1fr"] {
+      grid-template-columns: 1fr !important;
+    }
+    /* Section padding */
+    section[id="resources"] {
+      padding: 40px 4% !important;
+    }
+    /* Agent card flex: stack photo + name */
+    div[style*="display:flex;align-items:center;gap:1.2rem"] {
+      flex-direction: column !important;
+      text-align: center !important;
+    }
+    /* CTA buttons full width */
+    div[style*="display:flex;gap:0.8rem"] {
+      flex-direction: column !important;
+    }
+    /* Video placeholder height */
+    div[style*="aspect-ratio:16/9"] {
+      min-height: 200px !important;
+    }
+    /* Download card text */
+    div[style*="font-size:0.92rem;font-weight:600"] {
+      font-size: 0.85rem !important;
+    }
+  }
+  @media(max-width:480px){
+    div[style*="grid-template-columns:repeat(4,1fr)"] {
+      grid-template-columns: 1fr 1fr !important;
+    }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-logo">Janice <span>Chen</span></div>
+  <a href="index.html" class="nav-link">← Back to Home</a>
+</nav>
+
+<!-- QR LANDING PAGE -->
+<section id="resources" style="background:#F4F8FF;padding:80px 5%;">
+  <div style="max-width:1100px;margin:0 auto;">
+    <div style="text-align:center;margin-bottom:3rem;">
+      <div style="font-size:0.75rem;font-weight:600;letter-spacing:0.12em;text-transform:uppercase;color:#1D5FA6;margin-bottom:0.8rem;">Free Resources</div>
+      <h2 style="font-family:'Cormorant Garamond',serif;font-size:clamp(2rem,3.5vw,2.8rem);font-weight:700;color:#1A2942;margin-bottom:1rem;">Welcome! 👋 Janice Chen Here</h2>
+      <p style="font-size:1rem;color:#5A7090;max-width:520px;margin:0 auto;line-height:1.7;">Watch my quick intro video and download any of the free resources below — no sign-up needed!</p>
+    </div>
+    <div class="hero-grid" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:2rem;margin-bottom:3rem;align-items:start;">
+      <div style="background:#0A1628;border-radius:20px;padding:1.8rem;position:relative;overflow:hidden;min-width:0;">
+        <div style="position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,#1D5FA6,#64B5F6);"></div>
+        <div style="display:flex;align-items:center;gap:1.2rem;margin-bottom:1.5rem;">
+          <div style="width:70px;height:70px;border-radius:50%;background:linear-gradient(135deg,#1D5FA6,#64B5F6);display:flex;align-items:center;justify-content:center;font-family:'Cormorant Garamond',serif;font-size:1.6rem;font-weight:700;color:white;flex-shrink:0;overflow:hidden;">
+            <img src="janice.jpg" alt="Janice Chen" style="width:100%;height:100%;object-fit:cover;" onerror="this.style.display='none';this.parentElement.innerHTML='JC';">
+          </div>
+          <div>
+            <div style="font-family:'Cormorant Garamond',serif;font-size:1.2rem;font-weight:700;color:white;word-break:break-word;">Janice (Yu Wei) Chen</div>
+            <div style="font-size:0.78rem;color:#64B5F6;text-transform:uppercase;letter-spacing:0.1em;">MBA · Realtor® · DRE# 02140656</div>
+          </div>
+        </div>
+        <div style="display:flex;flex-direction:column;gap:0.6rem;margin-bottom:1.5rem;">
+          <div style="font-size:0.88rem;color:rgba(255,255,255,0.7);">🏢 Pinnacle Real Estate Group</div>
+          <div style="font-size:0.88rem;color:rgba(255,255,255,0.7);">📞 (951) 367-7321</div>
+          <div style="font-size:0.88rem;color:rgba(255,255,255,0.7);">✉️ janicechenhomes@gmail.com</div>
+          <div style="font-size:0.88rem;color:rgba(255,255,255,0.7);">📍 IE &amp; SoCal Specialist</div>
+        </div>
+        <div style="display:flex;gap:0.8rem;flex-wrap:wrap;">
+          <a href="tel:9513677321" style="flex:1;background:#1D5FA6;color:white;padding:0.75rem;border-radius:8px;text-align:center;text-decoration:none;font-size:0.88rem;font-weight:600;">📞 Call</a>
+          <a href="mailto:janicechenhomes@gmail.com" style="flex:1;background:transparent;color:white;padding:0.75rem;border-radius:8px;text-align:center;text-decoration:none;font-size:0.88rem;border:1px solid rgba(255,255,255,0.2);">✉️ Email</a>
+          <a href="index.html#estimate" style="flex:1;background:#C9A84C;color:#0A1628;padding:0.75rem;border-radius:8px;text-align:center;text-decoration:none;font-size:0.88rem;font-weight:700;">🏠 Estimate</a>
+        </div>
+      </div>
+      <!-- VIDEO PLACEHOLDER - Replace inner div with YouTube iframe when ready -->
+      <div style="background:#0A1628;border-radius:20px;overflow:hidden;position:relative;aspect-ratio:16/9;display:flex;flex-direction:column;align-items:center;justify-content:center;border:2px dashed rgba(100,181,246,0.3);">
+        <!-- TO ADD VIDEO: Replace this entire div content with:
+        <iframe width="100%" height="100%" src="https://www.youtube.com/embed/VIDEO_ID_HERE" frameborder="0" allowfullscreen style="position:absolute;top:0;left:0;width:100%;height:100%;"></iframe>
+        -->
+        <div style="font-size:3rem;margin-bottom:1rem;">🎥</div>
+        <div style="font-size:1rem;font-weight:600;color:white;margin-bottom:0.4rem;">Intro Video</div>
+        <div style="font-size:0.82rem;color:rgba(255,255,255,0.4);text-align:center;padding:0 2rem;">Search VIDEO_ID_HERE in VS Code<br>and replace with your YouTube ID</div>
+      </div>
+    </div>
+    <div style="margin-bottom:2rem;">
+      <div style="font-size:0.75rem;font-weight:600;letter-spacing:0.12em;text-transform:uppercase;color:#1D5FA6;margin-bottom:1rem;">📊 Eastvale Market Data — April 2026</div>
+      <div class="charts-grid" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:1.2rem;margin-bottom:2rem;">
+        <div style="background:white;border-radius:14px;overflow:hidden;border:1px solid rgba(29,95,166,0.12);box-shadow:0 4px 20px rgba(10,22,40,0.06);">
+          <img src="Sold_Listings.jpg" alt="April 2026 Sold Listings" style="width:100%;display:block;">
+          <div style="padding:1rem 1.2rem;">
+            <div style="font-size:0.88rem;font-weight:600;color:#1A2942;margin-bottom:0.3rem;">April 2026 Sold Listings</div>
+            <div style="font-size:0.78rem;color:#5A7090;">Eastvale · Median Sold Price $985,000</div>
+          </div>
+        </div>
+        <div style="background:white;border-radius:14px;overflow:hidden;border:1px solid rgba(29,95,166,0.12);box-shadow:0 4px 20px rgba(10,22,40,0.06);">
+          <img src="Median_Estimated_Property_Value.jpg" alt="Median Estimated Property Value" style="width:100%;display:block;">
+          <div style="padding:1rem 1.2rem;">
+            <div style="font-size:0.88rem;font-weight:600;color:#1A2942;margin-bottom:0.3rem;">Median Estimated Property Value</div>
+            <div style="font-size:0.78rem;color:#5A7090;">Eastvale · $967,870 · +4.3% (12 months)</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div style="font-size:0.75rem;font-weight:600;letter-spacing:0.12em;text-transform:uppercase;color:#1D5FA6;margin-bottom:1rem;">📥 Free Downloads</div>
+    <div class="downloads-grid" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:1rem;">
+      <div style="background:white;border-radius:16px;overflow:hidden;border:1px solid rgba(29,95,166,0.12);box-shadow:0 4px 20px rgba(10,22,40,0.06);display:flex;flex-direction:column;">
+        <div style="height:160px;overflow:hidden;">
+          <img src="thumb-market.jpg" alt="Market Report" style="width:100%;height:100%;object-fit:cover;object-position:top;">
+        </div>
+        <div style="padding:1.2rem;flex:1;display:flex;flex-direction:column;">
+          <div style="font-size:0.7rem;text-transform:uppercase;letter-spacing:0.08em;color:#1D5FA6;margin-bottom:0.4rem;">Market Report</div>
+          <div style="font-size:0.92rem;font-weight:600;color:#1A2942;margin-bottom:0.4rem;line-height:1.3;">Eastvale May 2026 Market Update</div>
+          <div style="font-size:0.78rem;color:#5A7090;margin-bottom:1rem;flex:1;">Latest real-time market data for Eastvale, CA</div>
+          <a href="market-report.pdf" download style="display:block;background:#1D5FA6;color:white;padding:0.65rem;border-radius:8px;text-align:center;text-decoration:none;font-size:0.82rem;font-weight:600;" onclick="gtag('event','download',{'event_category':'PDF','event_label':'Market Report'})">⬇ Download</a>
+        </div>
+      </div>
+      <div style="background:white;border-radius:16px;overflow:hidden;border:1px solid rgba(29,95,166,0.12);box-shadow:0 4px 20px rgba(10,22,40,0.06);display:flex;flex-direction:column;">
+        <div style="height:160px;overflow:hidden;">
+          <img src="thumb-housing.jpg" alt="US Housing Prices" style="width:100%;height:100%;object-fit:cover;object-position:top;">
+        </div>
+        <div style="padding:1.2rem;flex:1;display:flex;flex-direction:column;">
+          <div style="font-size:0.7rem;text-transform:uppercase;letter-spacing:0.08em;color:#1D5FA6;margin-bottom:0.4rem;">Investment Guide</div>
+          <div style="font-size:0.92rem;font-weight:600;color:#1A2942;margin-bottom:0.4rem;line-height:1.3;">U.S. Housing Prices 1951–2025</div>
+          <div style="font-size:0.78rem;color:#5A7090;margin-bottom:1rem;flex:1;">75 years of data — prices only declined 7 times</div>
+          <a href="housing-prices.pdf" download style="display:block;background:#1D5FA6;color:white;padding:0.65rem;border-radius:8px;text-align:center;text-decoration:none;font-size:0.82rem;font-weight:600;">⬇ Download</a>
+        </div>
+      </div>
+      <div style="background:white;border-radius:16px;overflow:hidden;border:1px solid rgba(29,95,166,0.12);box-shadow:0 4px 20px rgba(10,22,40,0.06);display:flex;flex-direction:column;">
+        <div style="height:160px;overflow:hidden;position:relative;">
+          <div style="display:flex;height:100%;">
+            <img src="thumb-presale-p1.jpg" alt="Pre-Sale Page 1" style="width:50%;height:100%;object-fit:cover;object-position:top;">
+            <img src="thumb-presale-p2.jpg" alt="Pre-Sale Page 2" style="width:50%;height:100%;object-fit:cover;object-position:top;border-left:2px solid white;">
+          </div>
+          <div style="position:absolute;bottom:6px;right:8px;background:rgba(10,22,40,0.7);color:white;font-size:0.65rem;padding:2px 7px;border-radius:10px;">2 pages</div>
+        </div>
+        <div style="padding:1.2rem;flex:1;display:flex;flex-direction:column;">
+          <div style="font-size:0.7rem;text-transform:uppercase;letter-spacing:0.08em;color:#1D5FA6;margin-bottom:0.4rem;">Seller Guide</div>
+          <div style="font-size:0.92rem;font-weight:600;color:#1A2942;margin-bottom:0.4rem;line-height:1.3;">Pre-Sale Inspection Reports</div>
+          <div style="font-size:0.78rem;color:#5A7090;margin-bottom:1rem;flex:1;">CA cities requiring building reports — costs &amp; contacts (2 pages)</div>
+          <a href="presale-inspection.pdf" download style="display:block;background:#1D5FA6;color:white;padding:0.65rem;border-radius:8px;text-align:center;text-decoration:none;font-size:0.82rem;font-weight:600;">⬇ Download (2 pages)</a>
+        </div>
+      </div>
+      <div style="background:white;border-radius:16px;overflow:hidden;border:1px solid rgba(29,95,166,0.12);box-shadow:0 4px 20px rgba(10,22,40,0.06);display:flex;flex-direction:column;">
+        <div style="height:160px;overflow:hidden;position:relative;">
+          <img src="thumb-prop19.jpg" alt="Proposition 19" style="width:100%;height:100%;object-fit:cover;object-position:top;filter:blur(3px);">
+          <div style="position:absolute;inset:0;background:rgba(10,22,40,0.6);display:flex;align-items:center;justify-content:center;">
+            <div style="text-align:center;"><div style="font-size:2rem;">🔒</div><div style="font-size:0.75rem;color:white;font-weight:600;margin-top:0.3rem;">Contact to Unlock</div></div>
+          </div>
+        </div>
+        <div style="padding:1.2rem;flex:1;display:flex;flex-direction:column;">
+          <div style="font-size:0.7rem;text-transform:uppercase;letter-spacing:0.08em;color:#C9A84C;margin-bottom:0.4rem;">55歲以上屋主優勢</div>
+          <div style="font-size:0.92rem;font-weight:600;color:#1A2942;margin-bottom:0.4rem;line-height:1.3;">Proposition 19 — 55+ Property Tax Benefits</div>
+          <div style="font-size:0.78rem;color:#5A7090;margin-bottom:1rem;flex:1;">19號法案對55歲及以上屋主的稅務優勢分析</div>
+          <button onclick="document.getElementById('prop19-modal').style.display='flex'" style="display:block;background:#C9A84C;color:#0A1628;padding:0.65rem;border-radius:8px;text-align:center;font-size:0.82rem;font-weight:700;border:none;cursor:pointer;width:100%;font-family:'Outfit',sans-serif;">🔓 Click to Unlock</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROP 19 UNLOCK MODAL -->
+<div id="prop19-modal" style="display:none;position:fixed;inset:0;background:rgba(0,0,0,0.75);z-index:999;align-items:center;justify-content:center;">
+  <div style="background:white;border-radius:20px;padding:2.5rem;max-width:420px;width:90%;position:relative;">
+    <div style="position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,#1D5FA6,#64B5F6);border-radius:20px 20px 0 0;"></div>
+    <div style="text-align:center;margin-bottom:1.5rem;">
+      <div style="font-size:2.5rem;margin-bottom:0.5rem;">🔒</div>
+      <h3 style="font-family:'Cormorant Garamond',serif;font-size:1.5rem;font-weight:700;color:#1A2942;margin-bottom:0.4rem;">Unlock Proposition 19 Report</h3>
+      <p style="font-size:0.85rem;color:#5A7090;line-height:1.6;">55歲及以上屋主的稅務優勢分析<br>Leave your contact and Janice will send you a personalized analysis!</p>
+    </div>
+    <div style="display:flex;flex-direction:column;gap:0.8rem;">
+      <input type="text" id="unlock-name" placeholder="Your Name *" style="width:100%;padding:0.85rem 1rem;border:1px solid rgba(29,95,166,0.2);border-radius:10px;font-family:'Outfit',sans-serif;font-size:0.95rem;outline:none;box-sizing:border-box;">
+      <input type="tel" id="unlock-phone" placeholder="Phone Number *" style="width:100%;padding:0.85rem 1rem;border:1px solid rgba(29,95,166,0.2);border-radius:10px;font-family:'Outfit',sans-serif;font-size:0.95rem;outline:none;box-sizing:border-box;">
+      <input type="email" id="unlock-email" placeholder="Email Address *" style="width:100%;padding:0.85rem 1rem;border:1px solid rgba(29,95,166,0.2);border-radius:10px;font-family:'Outfit',sans-serif;font-size:0.95rem;outline:none;box-sizing:border-box;">
+      <div id="unlock-error" style="display:none;color:#E74C3C;font-size:0.78rem;text-align:center;padding:0.4rem;"></div>
+      <button onclick="submitUnlock()" style="background:linear-gradient(135deg,#1D5FA6,#2E80D8);color:white;padding:1rem;border-radius:10px;border:none;font-size:1rem;font-weight:600;cursor:pointer;font-family:'Outfit',sans-serif;">Unlock Free Report →</button>
+      <button onclick="document.getElementById('prop19-modal').style.display='none'" style="background:transparent;color:#5A7090;border:none;font-size:0.85rem;cursor:pointer;font-family:'Outfit',sans-serif;padding:0.3rem;">Cancel</button>
+    </div>
+  </div>
+</div>
+
+
+
+<!-- PROP 19 UNLOCK MODAL -->
+<div id="prop19-modal" style="display:none;position:fixed;inset:0;background:rgba(0,0,0,0.75);z-index:999;align-items:center;justify-content:center;">
+  <div style="background:white;border-radius:20px;padding:2.5rem;max-width:420px;width:90%;position:relative;">
+    <div style="position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,#1D5FA6,#64B5F6);border-radius:20px 20px 0 0;"></div>
+    <div style="text-align:center;margin-bottom:1.5rem;">
+      <div style="font-size:2.5rem;margin-bottom:0.5rem;">🔒</div>
+      <h3 style="font-family:'Cormorant Garamond',serif;font-size:1.5rem;font-weight:700;color:#1A2942;margin-bottom:0.4rem;">Unlock Proposition 19 Report</h3>
+      <p style="font-size:0.85rem;color:#5A7090;line-height:1.6;">55歲及以上屋主的稅務優勢分析<br>Leave your contact and Janice will send you a personalized analysis!</p>
+    </div>
+    <div style="display:flex;flex-direction:column;gap:0.8rem;">
+      <input type="text" id="unlock-name" placeholder="Your Name *" style="width:100%;padding:0.85rem 1rem;border:1px solid rgba(29,95,166,0.2);border-radius:10px;font-family:'Outfit',sans-serif;font-size:0.95rem;outline:none;box-sizing:border-box;">
+      <input type="tel" id="unlock-phone" placeholder="Phone Number *" style="width:100%;padding:0.85rem 1rem;border:1px solid rgba(29,95,166,0.2);border-radius:10px;font-family:'Outfit',sans-serif;font-size:0.95rem;outline:none;box-sizing:border-box;">
+      <input type="email" id="unlock-email" placeholder="Email Address *" style="width:100%;padding:0.85rem 1rem;border:1px solid rgba(29,95,166,0.2);border-radius:10px;font-family:'Outfit',sans-serif;font-size:0.95rem;outline:none;box-sizing:border-box;">
+      <div id="unlock-error" style="display:none;color:#E74C3C;font-size:0.78rem;text-align:center;padding:0.4rem;"></div>
+      <button onclick="submitUnlock()" style="background:linear-gradient(135deg,#1D5FA6,#2E80D8);color:white;padding:1rem;border-radius:10px;border:none;font-size:1rem;font-weight:600;cursor:pointer;font-family:'Outfit',sans-serif;">Unlock Free Report →</button>
+      <button onclick="document.getElementById('prop19-modal').style.display='none'" style="background:transparent;color:#5A7090;border:none;font-size:0.85rem;cursor:pointer;font-family:'Outfit',sans-serif;padding:0.3rem;">Cancel</button>
+    </div>
+  </div>
+</div>
+
+<footer style="background:#0A1628;color:rgba(255,255,255,0.4);padding:2rem 5%;text-align:center;font-size:0.78rem;line-height:1.8;border-top:1px solid rgba(100,181,246,0.1);">
+  <div style="color:white;font-family:'Cormorant Garamond',serif;font-size:1.2rem;margin-bottom:0.4rem;">Janice (Yu Wei) Chen</div>
+  Realtor® · DRE# 02140656 · Pinnacle Real Estate Group<br>
+  📞 (951) 367-7321 · ✉️ janicechenhomes@gmail.com<br>
+  <div style="margin-top:0.8rem;font-size:0.72rem;opacity:0.5;">© 2025 All rights reserved. Equal Housing Opportunity.</div>
+</footer>
+
+<script>
+  function submitUnlock() {
+    const name  = document.getElementById('unlock-name').value.trim();
+    const phone = document.getElementById('unlock-phone').value.trim();
+    const email = document.getElementById('unlock-email').value.trim();
+    const errDiv = document.getElementById('unlock-error');
+    if (!name || !phone || !email) {
+      errDiv.style.display = 'block';
+      errDiv.textContent = 'Please fill in all fields.';
+      return;
+    }
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+      errDiv.style.display = 'block';
+      errDiv.textContent = 'Please enter a valid email address.';
+      return;
+    }
+    errDiv.style.display = 'none';
+    // Send lead via EmailJS
+    // Send to YOUR email via EmailJS
+    emailjs.send(EMAILJS_SERVICE_ID, 'template_lkj2l8s', {
+      lead_type    : 'Prop 19 Unlock - 55+ Homeowner',
+      from_name    : name || 'N/A',
+      from_email   : email || 'N/A',
+      phone        : phone || 'N/A',
+      timeline     : 'Prop 19 Tax Benefits Interest',
+      property_info: 'Interested in Prop 19 55+ Tax Benefits'
+    }).then(function(response) {
+      console.log('✅ Prop19 lead sent!', response.status);
+    }).catch(function(error) {
+      console.error('❌ EmailJS error:', JSON.stringify(error));
+    });
+    // Unlock and download
+    document.getElementById('prop19-modal').style.display = 'none';
+    const link = document.createElement('a');
+    link.href = 'prop19.pdf';
+    link.download = 'prop19.pdf';
+    link.click();
+    // Update button
+    const btn = document.querySelector('#prop19-card button');
+    if (btn) { btn.textContent = '✅ Downloaded!'; btn.style.background = '#2ECC71'; btn.disabled = true; }
+  }
+</script>
+</body>
+</html>
