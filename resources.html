@@ -25,6 +25,12 @@
 
   // 📡 PAGE VISIT NOTIFICATION — fires when someone opens this page
   window.addEventListener('load', function() {
+    // Skip notification if it's Janice checking her own page
+    var params = new URLSearchParams(window.location.search);
+    if (params.get('me') === 'janice') {
+      console.log('👋 Hi Janice! Notification skipped.');
+      return;
+    }
     // Collect visit info
     var visitTime = new Date().toLocaleString('en-US', {
       timeZone: 'America/Los_Angeles',
