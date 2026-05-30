@@ -5,13 +5,13 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Janice Chen | Free Resources</title>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;600;700&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
-<!-- Google Analytics -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=GA_MEASUREMENT_ID"></script>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-Z00FFFVTY4"></script>
 <script>
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
   gtag('js', new Date());
-  gtag('config', 'GA_MEASUREMENT_ID');
+  gtag('config', 'G-Z00FFFVTY4');
 </script>
 <!-- EmailJS -->
 <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
@@ -19,7 +19,7 @@
   const EMAILJS_PUBLIC_KEY       = 'X5LCY9uIVvg1EqunE';       // Account > General > Public Key
   const EMAILJS_SERVICE_ID       = 'service_4cfqawp';       // Email Services > Service ID
   const EMAILJS_TEMPLATE_ID      = 'template_lkj2l8s';      // Email Templates > Your notification template
-  const EMAILJS_CLIENT_TEMPLATE  = 'emplate_1ndf06d'; // Email Templates > Client confirmation template
+  const EMAILJS_CLIENT_TEMPLATE  = 'template_1ndf06d'; // Email Templates > Client confirmation template
   // ============================================
   (function(){ emailjs.init(EMAILJS_PUBLIC_KEY); })();
 </script>
@@ -268,26 +268,6 @@
 
 
 
-<!-- PROP 19 UNLOCK MODAL -->
-<div id="prop19-modal" style="display:none;position:fixed;inset:0;background:rgba(0,0,0,0.75);z-index:999;align-items:center;justify-content:center;">
-  <div style="background:white;border-radius:20px;padding:2.5rem;max-width:420px;width:90%;position:relative;">
-    <div style="position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,#1D5FA6,#64B5F6);border-radius:20px 20px 0 0;"></div>
-    <div style="text-align:center;margin-bottom:1.5rem;">
-      <div style="font-size:2.5rem;margin-bottom:0.5rem;">🔒</div>
-      <h3 style="font-family:'Cormorant Garamond',serif;font-size:1.5rem;font-weight:700;color:#1A2942;margin-bottom:0.4rem;">Unlock Proposition 19 Report</h3>
-      <p style="font-size:0.85rem;color:#5A7090;line-height:1.6;">55歲及以上屋主的稅務優勢分析<br>Leave your contact and Janice will send you a personalized analysis!</p>
-    </div>
-    <div style="display:flex;flex-direction:column;gap:0.8rem;">
-      <input type="text" id="unlock-name" placeholder="Your Name *" style="width:100%;padding:0.85rem 1rem;border:1px solid rgba(29,95,166,0.2);border-radius:10px;font-family:'Outfit',sans-serif;font-size:0.95rem;outline:none;box-sizing:border-box;">
-      <input type="tel" id="unlock-phone" placeholder="Phone Number *" style="width:100%;padding:0.85rem 1rem;border:1px solid rgba(29,95,166,0.2);border-radius:10px;font-family:'Outfit',sans-serif;font-size:0.95rem;outline:none;box-sizing:border-box;">
-      <input type="email" id="unlock-email" placeholder="Email Address *" style="width:100%;padding:0.85rem 1rem;border:1px solid rgba(29,95,166,0.2);border-radius:10px;font-family:'Outfit',sans-serif;font-size:0.95rem;outline:none;box-sizing:border-box;">
-      <div id="unlock-error" style="display:none;color:#E74C3C;font-size:0.78rem;text-align:center;padding:0.4rem;"></div>
-      <button onclick="submitUnlock()" style="background:linear-gradient(135deg,#1D5FA6,#2E80D8);color:white;padding:1rem;border-radius:10px;border:none;font-size:1rem;font-weight:600;cursor:pointer;font-family:'Outfit',sans-serif;">Unlock Free Report →</button>
-      <button onclick="document.getElementById('prop19-modal').style.display='none'" style="background:transparent;color:#5A7090;border:none;font-size:0.85rem;cursor:pointer;font-family:'Outfit',sans-serif;padding:0.3rem;">Cancel</button>
-    </div>
-  </div>
-</div>
-
 <footer style="background:#0A1628;color:rgba(255,255,255,0.4);padding:2rem 5%;text-align:center;font-size:0.78rem;line-height:1.8;border-top:1px solid rgba(100,181,246,0.1);">
   <div style="color:white;font-family:'Cormorant Garamond',serif;font-size:1.2rem;margin-bottom:0.4rem;">Janice (Yu Wei) Chen</div>
   Realtor® · DRE# 02140656 · Pinnacle Real Estate Group<br>
@@ -339,6 +319,12 @@
       return;
     }
     errDiv.style.display = 'none';
+    // GA4 Event Tracking — Lead captured
+    gtag('event', 'unlock_prop19', {
+      'event_category': 'Lead',
+      'event_label': 'Prop 19 Unlock Form',
+      'value': 1
+    });
     // Send lead via EmailJS
     // Send to YOUR email via EmailJS
     emailjs.send(EMAILJS_SERVICE_ID, 'template_lkj2l8s', {
