@@ -22,6 +22,32 @@
   const EMAILJS_CLIENT_TEMPLATE  = 'template_1ndf06d'; // Email Templates > Client confirmation template
   // ============================================
   (function(){ emailjs.init(EMAILJS_PUBLIC_KEY); })();
+
+  // 📡 PAGE VISIT NOTIFICATION — fires when someone opens this page
+  window.addEventListener('load', function() {
+    // Collect visit info
+    var visitTime = new Date().toLocaleString('en-US', {
+      timeZone: 'America/Los_Angeles',
+      year: 'numeric', month: 'short', day: 'numeric',
+      hour: '2-digit', minute: '2-digit', hour12: true
+    });
+    var device = /Mobi|Android/i.test(navigator.userAgent) ? '📱 Mobile' : '💻 Desktop';
+    var browser = navigator.userAgent.match(/(Chrome|Safari|Firefox|Edge)/)?.[1] || 'Unknown';
+    var referrer = document.referrer ? document.referrer : 'Direct / QR Code Scan';
+
+    emailjs.send(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID, {
+      lead_type    : '👀 Page Visit — Postcard QR Scan',
+      from_name    : 'Website Visitor',
+      from_email   : 'N/A',
+      phone        : 'N/A',
+      timeline     : visitTime + ' PST',
+      property_info: 'Device: ' + device + ' | Browser: ' + browser + ' | Source: ' + referrer
+    }).then(function() {
+      console.log('✅ Visit notification sent');
+    }).catch(function(err) {
+      console.error('❌ Visit notification error:', JSON.stringify(err));
+    });
+  });
 </script>
 <style>
   * { margin:0; padding:0; box-sizing:border-box; }
