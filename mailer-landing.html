@@ -1,0 +1,499 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Free Homeowner Guide | Janice Chen</title>
+
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-Z00FFFVTY4"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-Z00FFFVTY4');
+</script>
+
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600;700&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+
+<style>
+  :root {
+    --navy: #0A1628;
+    --gold: #C9A96E;
+    --gold-light: #E8D5B0;
+    --white: #ffffff;
+    --grey: #F5F7FA;
+    --text: #1A2942;
+    --muted: #6B7A90;
+  }
+
+  * { margin:0; padding:0; box-sizing:border-box; }
+
+  body {
+    font-family: 'Outfit', sans-serif;
+    background: var(--navy);
+    min-height: 100vh;
+    color: var(--text);
+  }
+
+  /* ── Hero ── */
+  .hero {
+    background: var(--navy);
+    padding: 48px 24px 40px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero::before {
+    content: '';
+    position: absolute;
+    top: -60px; left: 50%;
+    transform: translateX(-50%);
+    width: 500px; height: 500px;
+    background: radial-gradient(circle, rgba(201,169,110,0.12) 0%, transparent 70%);
+    pointer-events: none;
+  }
+  .hero-badge {
+    display: inline-block;
+    background: rgba(201,169,110,0.15);
+    border: 1px solid rgba(201,169,110,0.4);
+    color: var(--gold);
+    font-size: 0.72rem;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    padding: 6px 16px;
+    border-radius: 100px;
+    margin-bottom: 20px;
+  }
+  .hero h1 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(2rem, 6vw, 3rem);
+    font-weight: 700;
+    color: var(--white);
+    line-height: 1.15;
+    margin-bottom: 8px;
+  }
+  .hero h1 span { color: var(--gold); }
+  .hero-cn {
+    font-size: 1rem;
+    color: rgba(255,255,255,0.5);
+    margin-bottom: 20px;
+    font-weight: 300;
+  }
+  .hero-desc {
+    font-size: 0.95rem;
+    color: rgba(255,255,255,0.7);
+    line-height: 1.7;
+    max-width: 480px;
+    margin: 0 auto 28px;
+  }
+
+  /* ── What's Inside strip ── */
+  .inside-strip {
+    background: rgba(255,255,255,0.04);
+    border-top: 1px solid rgba(201,169,110,0.2);
+    border-bottom: 1px solid rgba(201,169,110,0.2);
+    padding: 16px 24px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 12px 24px;
+  }
+  .inside-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 0.82rem;
+    color: rgba(255,255,255,0.7);
+  }
+  .inside-dot {
+    width: 6px; height: 6px;
+    border-radius: 50%;
+    background: var(--gold);
+    flex-shrink: 0;
+  }
+
+  /* ── Main card ── */
+  .main {
+    background: var(--white);
+    border-radius: 24px 24px 0 0;
+    margin-top: 0;
+    padding: 36px 24px 48px;
+    max-width: 560px;
+    margin: 0 auto;
+  }
+
+  .form-headline {
+    text-align: center;
+    margin-bottom: 28px;
+  }
+  .form-headline h2 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.6rem;
+    font-weight: 700;
+    color: var(--navy);
+    margin-bottom: 6px;
+  }
+  .form-headline p {
+    font-size: 0.88rem;
+    color: var(--muted);
+    line-height: 1.6;
+  }
+
+  /* ── Form ── */
+  .form-group { margin-bottom: 14px; }
+  .form-group label {
+    display: block;
+    font-size: 0.78rem;
+    font-weight: 600;
+    color: var(--navy);
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    margin-bottom: 6px;
+  }
+  .form-group input {
+    width: 100%;
+    padding: 14px 16px;
+    border: 1.5px solid #E0E6EF;
+    border-radius: 12px;
+    font-family: 'Outfit', sans-serif;
+    font-size: 0.95rem;
+    color: var(--text);
+    outline: none;
+    transition: border-color 0.2s;
+    background: #FAFBFD;
+  }
+  .form-group input:focus {
+    border-color: var(--gold);
+    background: var(--white);
+  }
+  .form-group input::placeholder { color: #B0BAC8; }
+
+  .submit-btn {
+    width: 100%;
+    padding: 16px;
+    background: linear-gradient(135deg, var(--navy), #1D3A6B);
+    color: var(--white);
+    border: none;
+    border-radius: 12px;
+    font-family: 'Outfit', sans-serif;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    margin-top: 8px;
+    transition: opacity 0.2s, transform 0.1s;
+    position: relative;
+    overflow: hidden;
+  }
+  .submit-btn::after {
+    content: '';
+    position: absolute;
+    bottom: 0; left: 0; right: 0;
+    height: 3px;
+    background: var(--gold);
+  }
+  .submit-btn:hover { opacity: 0.92; transform: translateY(-1px); }
+  .submit-btn:disabled { opacity: 0.6; cursor: not-allowed; transform: none; }
+
+  .privacy-note {
+    text-align: center;
+    font-size: 0.75rem;
+    color: var(--muted);
+    margin-top: 12px;
+    line-height: 1.5;
+  }
+
+  /* ── Success state ── */
+  .success-screen {
+    display: none;
+    text-align: center;
+    padding: 20px 0;
+  }
+  .success-icon {
+    width: 72px; height: 72px;
+    background: linear-gradient(135deg, var(--navy), #1D3A6B);
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    margin: 0 auto 20px;
+    font-size: 2rem;
+  }
+  .success-screen h2 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: var(--navy);
+    margin-bottom: 8px;
+  }
+  .success-screen p {
+    font-size: 0.9rem;
+    color: var(--muted);
+    line-height: 1.7;
+    margin-bottom: 24px;
+  }
+
+  /* ── Choice buttons (after form submit) ── */
+  .choice-buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+  .choice-btn {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    padding: 16px 20px;
+    border-radius: 14px;
+    border: 1.5px solid #E0E6EF;
+    background: var(--grey);
+    cursor: pointer;
+    transition: all 0.2s;
+    text-decoration: none;
+    color: var(--text);
+  }
+  .choice-btn:hover {
+    border-color: var(--gold);
+    background: var(--white);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 24px rgba(10,22,40,0.08);
+  }
+  .choice-icon {
+    width: 44px; height: 44px;
+    border-radius: 10px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 1.4rem;
+    flex-shrink: 0;
+  }
+  .choice-icon.gold { background: rgba(201,169,110,0.15); }
+  .choice-icon.navy { background: rgba(10,22,40,0.08); }
+  .choice-text strong {
+    display: block;
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: var(--navy);
+    margin-bottom: 2px;
+  }
+  .choice-text span {
+    font-size: 0.8rem;
+    color: var(--muted);
+  }
+  .choice-arrow {
+    margin-left: auto;
+    color: var(--muted);
+    font-size: 1.1rem;
+  }
+
+  /* ── Agent footer ── */
+  .agent-footer {
+    background: var(--navy);
+    padding: 28px 24px;
+    text-align: center;
+    max-width: 560px;
+    margin: 0 auto;
+  }
+  .agent-name {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: var(--gold);
+    margin-bottom: 4px;
+  }
+  .agent-title {
+    font-size: 0.78rem;
+    color: rgba(255,255,255,0.5);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    margin-bottom: 12px;
+  }
+  .agent-contact {
+    font-size: 0.88rem;
+    color: rgba(255,255,255,0.7);
+    line-height: 1.8;
+  }
+  .agent-contact a { color: var(--gold); text-decoration: none; }
+  .divider { height: 1px; background: rgba(201,169,110,0.2); margin: 12px 0; }
+
+  @media (min-width: 600px) {
+    .hero { padding: 56px 40px 44px; }
+    .main { padding: 44px 48px 56px; border-radius: 24px; margin-top: -20px; }
+    .agent-footer { border-radius: 0 0 24px 24px; }
+    .wrapper { max-width: 560px; margin: 40px auto; border-radius: 24px; overflow: hidden; box-shadow: 0 40px 80px rgba(0,0,0,0.5); }
+    body { background: #060E1A; padding: 40px 20px; }
+  }
+</style>
+</head>
+<body>
+<div class="wrapper">
+
+  <!-- Hero -->
+  <div class="hero">
+    <div class="hero-badge">Free Resource · 免費資源</div>
+    <h1>You've Built Equity<br/>for Years. <span>Now What?</span></h1>
+    <p class="hero-cn">住了這麼多年，您的房產財富準備好了嗎？</p>
+    <p class="hero-desc">Get your free Long-Term Homeowner's Complete Selling Guide — covering timing, taxes, Prop 19, and your next move.</p>
+  </div>
+
+  <!-- What's inside -->
+  <div class="inside-strip">
+    <div class="inside-item"><div class="inside-dot"></div>When to sell</div>
+    <div class="inside-item"><div class="inside-dot"></div>Prop 19 savings</div>
+    <div class="inside-item"><div class="inside-dot"></div>Capital gains tax</div>
+    <div class="inside-item"><div class="inside-dot"></div>Step-by-step process</div>
+    <div class="inside-item"><div class="inside-dot"></div>Free CMA offer</div>
+  </div>
+
+  <!-- Form Card -->
+  <div class="main">
+
+    <!-- Form view -->
+    <div id="form-view">
+      <div class="form-headline">
+        <h2>Get Your Free Guide</h2>
+        <p>Enter your info below — Janice will send you the guide and is available to answer any questions.</p>
+      </div>
+
+      <div class="form-group">
+        <label>Your Name · 姓名</label>
+        <input type="text" id="lead-name" placeholder="Full Name" />
+      </div>
+      <div class="form-group">
+        <label>Phone · 電話</label>
+        <input type="tel" id="lead-phone" placeholder="Phone Number" />
+      </div>
+      <div class="form-group">
+        <label>Email · 電子郵件</label>
+        <input type="email" id="lead-email" placeholder="Email Address (optional)" />
+      </div>
+
+      <div id="form-error" style="display:none; color:#E74C3C; font-size:0.82rem; text-align:center; margin-bottom:10px;"></div>
+
+      <button class="submit-btn" id="submit-btn" onclick="submitLead()">
+        Get My Free Guide →
+      </button>
+      <p class="privacy-note">🔒 No spam. No obligation. Janice will reach out personally.</p>
+    </div>
+
+    <!-- Success view -->
+    <div class="success-screen" id="success-view">
+      <div class="success-icon">🎉</div>
+      <h2>You're All Set!</h2>
+      <p>Janice will be in touch shortly with your free guide.<br/>
+      <span style="font-size:0.82rem;">Janice 將很快與您聯繫並發送免費指南。</span></p>
+
+      <div class="choice-buttons">
+        <a href="LongTermHomeowner_SellingGuide_JaniceChen.pdf" target="_blank" class="choice-btn">
+          <div class="choice-icon gold">📄</div>
+          <div class="choice-text">
+            <strong>Download Guide Now</strong>
+            <span>立即下載完整賣房指南 PDF</span>
+          </div>
+          <div class="choice-arrow">→</div>
+        </a>
+        <a href="https://calendly.com/janicechenhomes" target="_blank" class="choice-btn" id="calendly-btn" style="display:none">
+          <div class="choice-icon navy">📅</div>
+          <div class="choice-text">
+            <strong>Schedule a Free Consultation</strong>
+            <span>預約免費諮詢 — 無壓力，純分享</span>
+          </div>
+          <div class="choice-arrow">→</div>
+        </a>
+        <a href="sms:9513677321" class="choice-btn">
+          <div class="choice-icon navy">💬</div>
+          <div class="choice-text">
+            <strong>Text Janice Directly</strong>
+            <span>直接發短信：951.367.7321</span>
+          </div>
+          <div class="choice-arrow">→</div>
+        </a>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Agent Footer -->
+  <div class="agent-footer">
+    <div class="agent-name">Janice Yu Wei Chen</div>
+    <div class="agent-title">REALTOR® · MBA · DRE# 02140656</div>
+    <div class="divider"></div>
+    <div class="agent-contact">
+      <a href="tel:9513677321">951.367.7321</a> &nbsp;·&nbsp;
+      <a href="mailto:janicechenhomes@gmail.com">janicechenhomes@gmail.com</a><br/>
+      WeChat: Uweichen &nbsp;·&nbsp; Line: uwaychen<br/>
+      <span style="font-size:0.78rem; color:rgba(255,255,255,0.35);">Pinnacle Real Estate Group · English · Mandarin · Taiwanese</span>
+    </div>
+  </div>
+
+</div>
+
+<script>
+  const EMAILJS_PUBLIC_KEY  = 'X5LCY9uIVvg1EqunE';
+  const EMAILJS_SERVICE_ID  = 'service_4cfqawp';
+  const EMAILJS_TEMPLATE_ID = 'template_lkj2l8s';
+
+  function submitLead() {
+    var name  = document.getElementById('lead-name').value.trim();
+    var phone = document.getElementById('lead-phone').value.trim();
+    var email = document.getElementById('lead-email').value.trim();
+    var errDiv = document.getElementById('form-error');
+
+    if (!name || !phone) {
+      errDiv.textContent = 'Please enter your name and phone number.';
+      errDiv.style.display = 'block';
+      return;
+    }
+    errDiv.style.display = 'none';
+
+    var btn = document.getElementById('submit-btn');
+    btn.disabled = true;
+    btn.textContent = 'Sending...';
+
+    // GA4 event
+    gtag('event', 'mailer_lead', {
+      'event_category': 'Lead',
+      'event_label': 'Mailer Landing Page',
+      'value': 1
+    });
+
+    var visitTime = new Date().toLocaleString('en-US', {
+      timeZone: 'America/Los_Angeles',
+      year: 'numeric', month: 'short', day: 'numeric',
+      hour: '2-digit', minute: '2-digit', hour12: true
+    });
+    var device = /Mobi|Android/i.test(navigator.userAgent) ? '📱 Mobile' : '💻 Desktop';
+
+    fetch('https://api.emailjs.com/api/v1.0/email/send', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        service_id  : EMAILJS_SERVICE_ID,
+        template_id : EMAILJS_TEMPLATE_ID,
+        user_id     : EMAILJS_PUBLIC_KEY,
+        template_params: {
+          lead_type    : '📮 Mailer Lead — Homeowner Guide Request',
+          from_name    : name,
+          from_email   : email || 'Not provided',
+          phone        : phone,
+          timeline     : visitTime + ' PST',
+          property_info: 'Device: ' + device + ' | Source: Postcard Mailer QR Scan'
+        }
+      })
+    })
+    .then(function(res) {
+      document.getElementById('form-view').style.display = 'none';
+      document.getElementById('success-view').style.display = 'block';
+    })
+    .catch(function() {
+      // Show success anyway — don't punish user for network error
+      document.getElementById('form-view').style.display = 'none';
+      document.getElementById('success-view').style.display = 'block';
+    });
+  }
+
+  // Allow Enter key to submit
+  document.addEventListener('keypress', function(e) {
+    if (e.key === 'Enter') submitLead();
+  });
+</script>
+</body>
+</html>
