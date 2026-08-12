@@ -1,0 +1,171 @@
+/* Janice Chen Homes — Blog / Article stylesheet
+   Brand tokens: navy #1F3864, coral #E8875A, gold #D4A64A */
+
+:root {
+  --navy: #1F3864;
+  --navy-light: #2d4a7c;
+  --coral: #E8875A;
+  --gold: #D4A64A;
+  --ink: #22242a;
+  --paper: #FBFAF8;
+  --line: #e6e1d8;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  background: var(--paper);
+  color: var(--ink);
+  font-family: "Noto Serif TC", "Georgia", "Songti TC", serif;
+  line-height: 1.85;
+  -webkit-font-smoothing: antialiased;
+}
+
+a { color: var(--coral); text-decoration: none; }
+a:hover { text-decoration: underline; }
+
+.site-header {
+  background: var(--navy);
+  color: #fff;
+  padding: 18px 24px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-family: "Helvetica Neue", "PingFang TC", sans-serif;
+}
+.site-header .brand { font-weight: 700; letter-spacing: 0.02em; font-size: 1.05rem; }
+.site-header .brand a { color: #fff; }
+.site-header nav a { color: #f1e9dc; margin-left: 18px; font-size: 0.92rem; }
+
+main.article {
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 48px 24px 80px;
+}
+
+.eyebrow {
+  font-family: "Helvetica Neue", "PingFang TC", sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  font-size: 0.72rem;
+  color: var(--coral);
+  font-weight: 700;
+  margin-bottom: 10px;
+}
+
+h1.article-title {
+  font-size: 2.1rem;
+  line-height: 1.35;
+  color: var(--navy);
+  margin: 0 0 12px;
+}
+
+.meta {
+  font-family: "Helvetica Neue", "PingFang TC", sans-serif;
+  font-size: 0.85rem;
+  color: #6b6f78;
+  margin-bottom: 32px;
+  border-bottom: 1px solid var(--line);
+  padding-bottom: 24px;
+}
+
+.article h2 {
+  color: var(--navy);
+  font-size: 1.35rem;
+  margin-top: 2.2em;
+  border-left: 4px solid var(--gold);
+  padding-left: 12px;
+}
+
+.article h3 {
+  color: var(--navy-light);
+  font-size: 1.08rem;
+  margin-top: 1.8em;
+}
+
+.direct-answer {
+  background: #fff;
+  border: 1px solid var(--line);
+  border-left: 4px solid var(--coral);
+  padding: 18px 20px;
+  border-radius: 4px;
+  font-size: 1.02rem;
+  margin: 20px 0 32px;
+}
+
+.article table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 20px 0;
+  font-family: "Helvetica Neue", "PingFang TC", sans-serif;
+  font-size: 0.92rem;
+}
+.article th, .article td {
+  border: 1px solid var(--line);
+  padding: 10px 12px;
+  text-align: left;
+}
+.article th { background: #f1ece0; color: var(--navy); }
+
+.faq-item { margin: 18px 0; }
+.faq-item .q { font-weight: 700; color: var(--navy); }
+
+.disclaimer {
+  margin-top: 48px;
+  padding: 16px 18px;
+  background: #f1ece0;
+  border-radius: 4px;
+  font-family: "Helvetica Neue", "PingFang TC", sans-serif;
+  font-size: 0.82rem;
+  color: #55585f;
+}
+
+.cta-box {
+  margin-top: 40px;
+  padding: 26px;
+  background: var(--navy);
+  color: #fff;
+  border-radius: 6px;
+  text-align: center;
+  font-family: "Helvetica Neue", "PingFang TC", sans-serif;
+}
+.cta-box a.btn {
+  display: inline-block;
+  margin-top: 14px;
+  background: var(--coral);
+  color: #fff;
+  padding: 12px 28px;
+  border-radius: 30px;
+  font-weight: 700;
+}
+.cta-box a.btn:hover { text-decoration: none; opacity: 0.92; }
+
+.site-footer {
+  text-align: center;
+  padding: 30px 20px;
+  font-family: "Helvetica Neue", "PingFang TC", sans-serif;
+  font-size: 0.8rem;
+  color: #8b8e96;
+}
+
+/* Blog index page */
+main.blog-index { max-width: 860px; margin: 0 auto; padding: 48px 24px 80px; }
+.post-card {
+  background: #fff;
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  padding: 22px 24px;
+  margin-bottom: 18px;
+}
+.post-card .cat {
+  font-family: "Helvetica Neue", "PingFang TC", sans-serif;
+  font-size: 0.72rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--gold);
+  font-weight: 700;
+}
+.post-card h2 { margin: 6px 0 8px; font-size: 1.25rem; }
+.post-card h2 a { color: var(--navy); }
+.post-card p { color: #4b4e56; font-size: 0.95rem; }
