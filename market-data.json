@@ -1,0 +1,79 @@
+{
+  "month": "August 2026",
+  "flyers": {
+    "fourCity": "August_SGV_IE_4City_Comparison_Flyer.jpeg",
+    "threeCity": "August_DiamondBar_RH_Walnut_Comparison_Flyer.jpeg"
+  },
+  "cities": {
+    "eastvale": {
+      "displayName": "Eastvale",
+      "medianSoldPrice": 943500,
+      "medianEstimatedValue": 966750,
+      "yoyChangePercent": 5.9,
+      "images": {
+        "sold": "August_Eastvale_Sold_Listings.jpg",
+        "value": "August_Eastvale_Median_Estimated_Property_Value.jpg"
+      }
+    },
+    "rowland-heights": {
+      "displayName": "Rowland Heights",
+      "medianSoldPrice": 869000,
+      "medianEstimatedValue": 982130,
+      "yoyChangePercent": -6.5,
+      "images": {
+        "sold": "August_Rowland_Heights_Sold_Listings.jpg",
+        "value": "August_Rowland_Heights_Median_Estimated_Property_Value.jpg"
+      }
+    },
+    "walnut": {
+      "displayName": "Walnut",
+      "medianSoldPrice": 1235750,
+      "medianEstimatedValue": 1274030,
+      "yoyChangePercent": 1.6,
+      "images": {
+        "sold": "August_Walnut_Sold_Listings.jpg",
+        "value": "August_Walnut_Median_Estimated_Property_Value.jpg"
+      }
+    },
+    "diamond-bar": {
+      "displayName": "Diamond Bar",
+      "medianSoldPrice": 1163000,
+      "medianEstimatedValue": 1198510,
+      "yoyChangePercent": 1.7,
+      "images": {
+        "sold": "August_Diamond_Bar_Sold_Listings.jpg",
+        "value": "August_Diamond_Bar_Median_Estimated_Property_Value.jpg"
+      }
+    },
+    "chino-hills": {
+      "displayName": "Chino Hills",
+      "medianSoldPrice": 1026900,
+      "medianEstimatedValue": 1069350,
+      "yoyChangePercent": -1.8,
+      "images": {
+        "sold": "August_Chino_Hills_Sold_Listings.jpg",
+        "value": "August_Chino_Hills_Median_Estimated_Property_Value.jpg"
+      }
+    },
+    "chino": {
+      "displayName": "Chino",
+      "medianSoldPrice": 850000,
+      "medianEstimatedValue": 798910,
+      "yoyChangePercent": -0.2,
+      "images": {
+        "sold": "August_Chino_Sold_Listings.jpg",
+        "value": "August_Chino_Median_Estimated_Property_Value.jpg"
+      }
+    },
+    "ontario": {
+      "displayName": "Ontario",
+      "medianSoldPrice": 755000,
+      "medianEstimatedValue": 718680,
+      "yoyChangePercent": -1.9,
+      "images": {
+        "sold": "August_Ontario_Sold_Listings.jpg",
+        "value": "August_Ontario_Median_Estimated_Property_Value.jpg"
+      }
+    }
+  }
+}
