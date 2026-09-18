@@ -3,7 +3,22 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Janice Chen | Realtor® | Free Home Estimate</title>
+<title>Janice Chen | Realtor® in Inland Empire &amp; Orange County | Free Home Estimate</title>
+<meta name="description" content="Janice Chen is a bilingual Realtor® (DRE# 02140656) with Pinnacle Real Estate Group, serving Eastvale, Chino Hills, Walnut, Diamond Bar &amp; Rowland Heights. Get a free home value estimate and the latest housing market updates.">
+<link rel="canonical" href="https://janicechenhomes.github.io/index.html">
+
+<!-- Open Graph / social share preview -->
+<meta property="og:type" content="website">
+<meta property="og:title" content="Janice Chen | Realtor® in Inland Empire & Orange County">
+<meta property="og:description" content="Bilingual Realtor® (DRE# 02140656) serving the SGV/Inland Empire. Free home value estimate, market updates, and full-service buying & selling support.">
+<meta property="og:url" content="https://janicechenhomes.github.io/index.html">
+<meta property="og:image" content="https://janicechenhomes.github.io/janice.jpg">
+<meta property="og:locale" content="en_US">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Janice Chen | Realtor® in Inland Empire & Orange County">
+<meta name="twitter:description" content="Bilingual Realtor® (DRE# 02140656) serving the SGV/Inland Empire. Free home value estimate & market updates.">
+<meta name="twitter:image" content="https://janicechenhomes.github.io/janice.jpg">
+
 <!-- EmailJS SDK -->
 <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
 <script>
@@ -18,6 +33,44 @@
   (function(){ emailjs.init(EMAILJS_PUBLIC_KEY); })();
 </script>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400&family=Outfit:wght@300;400;500;600&family=Jost:wght@200;300;400;500&display=swap" rel="stylesheet">
+
+<!-- Structured data: tells Google who you are, what you do, and where you serve -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "RealEstateAgent",
+  "name": "Janice (Yu Wei) Chen",
+  "image": "https://janicechenhomes.github.io/janice.jpg",
+  "url": "https://janicechenhomes.github.io/index.html",
+  "telephone": "+1-951-367-7321",
+  "email": "janicechenhomes@gmail.com",
+  "identifier": "DRE# 02140656",
+  "worksFor": {
+    "@type": "RealEstateAgent",
+    "name": "Pinnacle Real Estate Group",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "2633 S. Baldwin Ave.",
+      "addressLocality": "Arcadia",
+      "addressRegion": "CA",
+      "postalCode": "91007",
+      "addressCountry": "US"
+    }
+  },
+  "areaServed": [
+    {"@type": "City", "name": "Eastvale"},
+    {"@type": "City", "name": "Rowland Heights"},
+    {"@type": "City", "name": "Walnut"},
+    {"@type": "City", "name": "Diamond Bar"},
+    {"@type": "City", "name": "Chino"},
+    {"@type": "City", "name": "Chino Hills"},
+    {"@type": "City", "name": "Ontario"},
+    {"@type": "City", "name": "Arcadia"}
+  ],
+  "knowsLanguage": ["en", "zh"]
+}
+</script>
+
 <style>
   :root {
     --navy: #0A0A0A;
@@ -198,6 +251,9 @@
   /* FOOTER */
   footer { background: #080806; color: rgba(255,255,255,0.5); padding: 3rem 5%; text-align: center; border-top: 1px solid rgba(201,169,110,0.15); }
   .footer-name { font-family: 'Cormorant Garamond', serif; font-size: 1.5rem; font-weight: 700; color: var(--white); margin-bottom: 0.4rem; }
+  .footer-links { display: flex; justify-content: center; gap: 1.5rem; flex-wrap: wrap; margin: 1rem 0; font-size: 0.83rem; }
+  .footer-links a { color: rgba(255,255,255,0.6); text-decoration: none; }
+  .footer-links a:hover { color: #C9A96E; }
   .footer-info { font-size: 0.83rem; margin-bottom: 0.5rem; line-height: 1.8; }
   .footer-legal { font-size: 0.75rem; margin-top: 1.5rem; opacity: 0.5; }
 
@@ -353,6 +409,7 @@
     <li><a href="#services">Services</a></li>
     <li><a href="#estimate">Home Value</a></li>
     <li><a href="#reviews">Reviews</a></li>
+    <li><a href="resources.html">Market Update</a></li>
     <li><a href="/blog/">Blog</a></li>
   </ul>
   <a href="#estimate" class="nav-cta">Free Home Estimate</a>
@@ -639,6 +696,14 @@
 <!-- FOOTER -->
 <footer>
   <div class="footer-name">Janice Chen</div>
+  <div class="footer-links">
+    <a href="#about">About</a>
+    <a href="#services">Services</a>
+    <a href="#estimate">Home Value</a>
+    <a href="#reviews">Reviews</a>
+    <a href="resources.html">Market Update</a>
+    <a href="/blog/">Blog</a>
+  </div>
   <div class="footer-info">
     Realtor® · DRE# 02140656 · Pinnacle Real Estate Group<br>
     📞 (951) 367-7321 · ✉️ janicechenhomes@gmail.com<br>

@@ -129,14 +129,21 @@
   * { margin:0; padding:0; box-sizing:border-box; }
   body { font-family:'Outfit',sans-serif; background:#F4F8FF; }
   nav {
-    background:rgba(10,22,40,0.97); backdrop-filter:blur(12px);
-    border-bottom:1px solid rgba(100,181,246,0.12);
-    padding:0 5%; display:flex; align-items:center; justify-content:space-between; height:64px;
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    background:rgba(8,8,6,0.97); backdrop-filter:blur(12px);
+    border-bottom:1px solid rgba(201,169,110,0.15);
+    padding:0 5%; display:flex; align-items:center; justify-content:space-between; height:68px;
   }
-  .nav-logo { font-family:'Cormorant Garamond',serif; font-size:1.2rem; font-weight:600; color:white; }
-  .nav-logo span { color:#64B5F6; }
-  .nav-link { color:rgba(255,255,255,0.7); text-decoration:none; font-size:0.85rem; }
-  .nav-link:hover { color:#64B5F6; }
+  .nav-logo { font-family:'Cormorant Garamond',serif; font-size:1.35rem; font-weight:600; color:white; letter-spacing:0.02em; }
+  .nav-logo span { color:#F0E4C4; }
+  .nav-links { display:flex; gap:2rem; list-style:none; }
+  .nav-links a { color:rgba(255,255,255,0.75); text-decoration:none; font-size:0.88rem; font-weight:400; letter-spacing:0.04em; text-transform:uppercase; transition:color 0.2s; }
+  .nav-links a:hover { color:#C9A96E; }
+  .nav-links a.current { color:#C9A96E; }
+  .nav-cta { background:#C9A96E; color:#0A0A0A; padding:0.5rem 1.2rem; border-radius:6px; font-size:0.85rem; font-weight:600; text-decoration:none; transition:background 0.2s, transform 0.15s; border:none; cursor:pointer; }
+  .nav-cta:hover { background:#E8D5B0; transform:translateY(-1px); }
+  body { padding-top: 68px; }
+  @media(max-width:900px){ .nav-links { display:none; } }
   @media(max-width:768px){
     .hero-grid { grid-template-columns: 1fr !important; }
     .charts-grid { grid-template-columns: 1fr !important; }
@@ -193,7 +200,15 @@
 
 <nav>
   <div class="nav-logo">Janice <span>Chen</span></div>
-  <a href="index.html" class="nav-link">← Back to Home</a>
+  <ul class="nav-links">
+    <li><a href="index.html#about">About</a></li>
+    <li><a href="index.html#services">Services</a></li>
+    <li><a href="index.html#estimate">Home Value</a></li>
+    <li><a href="index.html#reviews">Reviews</a></li>
+    <li><a href="resources.html" class="current">Market Update</a></li>
+    <li><a href="/blog/">Blog</a></li>
+  </ul>
+  <a href="index.html#estimate" class="nav-cta">Free Home Estimate</a>
 </nav>
 
 <!-- QR LANDING PAGE -->
@@ -512,11 +527,22 @@
 
 
 
-<footer style="background:#0A1628;color:rgba(255,255,255,0.4);padding:2rem 5%;text-align:center;font-size:0.78rem;line-height:1.8;border-top:1px solid rgba(100,181,246,0.1);">
-  <div style="color:white;font-family:'Cormorant Garamond',serif;font-size:1.2rem;margin-bottom:0.4rem;">Janice (Yu Wei) Chen</div>
-  Realtor® · DRE# 02140656 · Pinnacle Real Estate Group<br>
-  📞 (951) 367-7321 · ✉️ janicechenhomes@gmail.com<br>
-  <div style="margin-top:0.8rem;font-size:0.72rem;opacity:0.5;">© 2025 All rights reserved. Equal Housing Opportunity.</div>
+<footer style="background:#080806;color:rgba(255,255,255,0.5);padding:3rem 5%;text-align:center;border-top:1px solid rgba(201,169,110,0.15);">
+  <div style="font-family:'Cormorant Garamond',serif;font-size:1.5rem;font-weight:700;color:white;margin-bottom:0.4rem;">Janice Chen</div>
+  <div style="display:flex;justify-content:center;gap:1.5rem;flex-wrap:wrap;margin:1rem 0;font-size:0.83rem;">
+    <a href="index.html#about" style="color:rgba(255,255,255,0.6);text-decoration:none;">About</a>
+    <a href="index.html#services" style="color:rgba(255,255,255,0.6);text-decoration:none;">Services</a>
+    <a href="index.html#estimate" style="color:rgba(255,255,255,0.6);text-decoration:none;">Home Value</a>
+    <a href="index.html#reviews" style="color:rgba(255,255,255,0.6);text-decoration:none;">Reviews</a>
+    <a href="resources.html" style="color:rgba(255,255,255,0.6);text-decoration:none;">Market Update</a>
+    <a href="/blog/" style="color:rgba(255,255,255,0.6);text-decoration:none;">Blog</a>
+  </div>
+  <div style="font-size:0.83rem;margin-bottom:0.5rem;line-height:1.8;">
+    Realtor® · DRE# 02140656 · Pinnacle Real Estate Group<br>
+    📞 (951) 367-7321 · ✉️ janicechenhomes@gmail.com<br>
+    Serving Inland Empire &amp; Orange County, CA
+  </div>
+  <div style="font-size:0.75rem;margin-top:1.5rem;opacity:0.5;">© 2025 Janice Chen Real Estate. All rights reserved. Equal Housing Opportunity. Information deemed reliable but not guaranteed.</div>
 </footer>
 
 <!-- MARKET DATA LOADER — reads market-data.json and fills in the 5 city blocks above.
