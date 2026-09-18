@@ -1,14 +1,15 @@
 /* Janice Chen Homes — Blog / Article stylesheet
-   Brand tokens: navy #1F3864, coral #E8875A, gold #D4A64A */
+   Brand tokens: navy #1F3864, coral #E8875A, gold #C9A96E (site brand gold) */
 
 :root {
   --navy: #1F3864;
   --navy-light: #2d4a7c;
   --coral: #E8875A;
-  --gold: #D4A64A;
+  --gold: #C9A96E;
   --ink: #22242a;
   --paper: #FBFAF8;
   --line: #e6e1d8;
+  --brand-dark: #0A0A0A;
 }
 
 * { box-sizing: border-box; }
@@ -25,18 +26,24 @@ body {
 a { color: var(--coral); text-decoration: none; }
 a:hover { text-decoration: underline; }
 
+/* ── Header: matches index.html / resources.html nav ── */
 .site-header {
-  background: var(--navy);
+  background: var(--brand-dark);
   color: #fff;
   padding: 18px 24px;
   display: flex;
   align-items: center;
   justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 1rem;
   font-family: "Helvetica Neue", "PingFang TC", sans-serif;
+  border-bottom: 1px solid rgba(201,169,110,0.15);
 }
 .site-header .brand { font-weight: 700; letter-spacing: 0.02em; font-size: 1.05rem; }
 .site-header .brand a { color: #fff; }
-.site-header nav a { color: #f1e9dc; margin-left: 18px; font-size: 0.92rem; }
+.site-header nav { display: flex; flex-wrap: wrap; gap: 1.2rem; }
+.site-header nav a { color: rgba(255,255,255,0.85); margin-left: 0; font-size: 0.92rem; }
+.site-header nav a:hover { color: var(--gold); text-decoration: none; }
 
 main.article {
   max-width: 720px;
@@ -124,7 +131,7 @@ h1.article-title {
 .cta-box {
   margin-top: 40px;
   padding: 26px;
-  background: var(--navy);
+  background: var(--brand-dark);
   color: #fff;
   border-radius: 6px;
   text-align: center;
@@ -133,21 +140,26 @@ h1.article-title {
 .cta-box a.btn {
   display: inline-block;
   margin-top: 14px;
-  background: var(--coral);
-  color: #fff;
+  background: var(--gold);
+  color: #0A0A0A;
   padding: 12px 28px;
   border-radius: 30px;
   font-weight: 700;
 }
 .cta-box a.btn:hover { text-decoration: none; opacity: 0.92; }
 
+/* ── Footer: matches index.html / resources.html footer ── */
 .site-footer {
+  background: #080806;
+  color: rgba(255,255,255,0.5);
   text-align: center;
   padding: 30px 20px;
   font-family: "Helvetica Neue", "PingFang TC", sans-serif;
   font-size: 0.8rem;
-  color: #8b8e96;
+  border-top: 1px solid rgba(201,169,110,0.15);
 }
+.site-footer a { color: rgba(255,255,255,0.6); }
+.site-footer a:hover { color: var(--gold); text-decoration: none; }
 
 /* Blog index page */
 main.blog-index { max-width: 860px; margin: 0 auto; padding: 48px 24px 80px; }
